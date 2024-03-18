@@ -35,7 +35,7 @@ const Product = ({ product }) => {
   return (
     <motion.div whileHover={{ translateY: -5 }}>
       <Card
-        className='w-72 xl:w-[400px] font-poppins cursor-pointer h-[33rem] xl:h-[40rem]'
+        className='w-72 xl:w-[400px] font-poppins cursor-pointer h-full'
         cover={
           <ProductModal
             isModalOpen={isModalOpen}

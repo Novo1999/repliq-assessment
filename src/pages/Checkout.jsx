@@ -38,7 +38,6 @@ const Checkout = () => {
     }
   }, [cart, navigate, summaryData])
 
-  console.log(errors)
   return (
     <div className='bg-gray-100 min-h-screen'>
       {showSummary ? (
@@ -95,13 +94,18 @@ const Checkout = () => {
                     key={id}
                     className='flex justify-between items-center mb-2'
                   >
-                    <p className='text-gray-700 font-semibold'>{name}</p>
-                    <p className='text-gray-700'>${price * quantity}</p>
+                    <div className='flex gap-2'>
+                      <p className='text-gray-700 font-semibold'>{name}</p>
+                      <p className='text-gray-400 font-semibold'>
+                        X {quantity}
+                      </p>
+                    </div>
+                    <p className='text-gray-700'>
+                      ${(price * quantity).toFixed(2)}
+                    </p>
                   </div>
                 )
               })}
-
-              {/* More product items */}
             </div>
             {/* Total */}
             <div className='flex justify-between items-center border-t pt-2'>

@@ -54,6 +54,7 @@ const CartDrawer = ({ children }) => {
                   Shipping taxes, and discounts calculated at checkout
                 </p>
                 <Link
+                  onClick={() => setOpen(false)}
                   to='/checkout'
                   className='rounded-full py-4 px-6 bg-indigo-600 text-white font-semibold text-lg w-full flex justify-center text-center transition-all duration-500 hover:bg-indigo-700 '
                 >

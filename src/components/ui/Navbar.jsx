@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { ImCart } from 'react-icons/im'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import useCartContext from '../../hooks/useCartContext.js'
 import CartDrawer from '../Cart/CartDrawer.jsx'
+import Navlink from './Navlink.jsx'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,16 +12,19 @@ const Navbar = () => {
     setIsOpen(!isOpen)
   }
 
-  const { cart, setCart } = useCartContext()
+  const { cart } = useCartContext()
 
   return (
     <nav className='fixed z-[999] w-full bg-white shadow-lg'>
       <div className='container px-6 py-4 mx-auto'>
         <div className='lg:flex lg:items-center lg:justify-between'>
           <div className='flex items-center justify-between'>
-            <p className='text-slate-700 text-3xl font-bold font-poppins'>
+            <Link
+              to='/'
+              className='text-slate-700 text-3xl font-bold font-poppins'
+            >
               Repliq E-commerce
-            </p>
+            </Link>
             <div className='flex lg:hidden'>
               <button
                 onClick={toggleMenu}
@@ -70,30 +74,10 @@ const Navbar = () => {
             }`}
           >
             <div className='flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8'>
-              <NavLink
-                to='/dashboard'
-                className='px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  hover:bg-gray-100 -700'
-              >
-                Dashboard
-              </NavLink>
-              <NavLink
-                to='/customers'
-                className='px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  hover:bg-gray-100 -700'
-              >
-                Customers
-              </NavLink>
-              <NavLink
-                to=''
-                className='px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  hover:bg-gray-100 -700'
-              >
-                Products
-              </NavLink>
-              <NavLink
-                to='/products'
-                className='px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  hover:bg-gray-100 -700'
-              >
-                Experts
-              </NavLink>
+              <Navlink to='/dashboard'>Dashboard</Navlink>
+              <Navlink to='/'>xx</Navlink>
+              <Navlink to='/'>xx</Navlink>
+              <Navlink to='/'>xx</Navlink>
             </div>
             <div className='items-center mt-4 lg:mt-0 hidden lg:flex'>
               <CartDrawer>

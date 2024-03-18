@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom'
+
 const ProductSummary = ({ summaryData }) => {
   const productsBought = summaryData
     .map((item) => `⭐ ${item.quantity} ${item.name}`)
     .join(', ')
-  console.log(summaryData)
   return (
     <div className='flex w-full max-w-sm min-h-80 overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 m-auto relative top-80'>
       <div className='flex items-center justify-center w-12 bg-emerald-500'>
@@ -22,6 +23,9 @@ const ProductSummary = ({ summaryData }) => {
           </span>
           <p className='text-xl text-gray-600 dark:text-gray-200'>You bought</p>
           <p className='flex flex-wrap w-72'>{productsBought}</p>
+          <Link to='/' className='btn btn-info'>
+            Back to Home
+          </Link>
         </div>
       </div>
     </div>

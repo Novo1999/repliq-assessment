@@ -7,3 +7,5 @@
 # top button
 
 # fix the cart quantity showing after adding to cart
+
+# dont let users in dashboard

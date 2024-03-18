@@ -1,20 +1,16 @@
-import { ToastContainer } from 'react-toastify'
+import { Outlet } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
-import ProductContainer from './components/Product/ProductContainer.jsx'
-import ProductList from './components/Product/ProductList.jsx'
-import Carousel from './components/ui/Carousel.jsx'
+
 import Navbar from './components/ui/Navbar.jsx'
+import AdminDashboard from './pages/AdminDashBoard.jsx'
+import CartProvider from './providers/CartProviders.jsx'
 
 function App() {
   return (
-    <>
+    <CartProvider>
       <Navbar />
-      <Carousel />
-      <ProductContainer>
-        <ProductList />
-      </ProductContainer>
-      <ToastContainer />
-    </>
+      <Outlet />
+    </CartProvider>
   )
 }
 
