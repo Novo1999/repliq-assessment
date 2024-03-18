@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -8,11 +9,13 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='relative bg-white shadow '>
+    <nav className='relative bg-white shadow-lg'>
       <div className='container px-6 py-4 mx-auto'>
         <div className='lg:flex lg:items-center lg:justify-between'>
           <div className='flex items-center justify-between'>
-            <p className='text-black'>Repliq E-commerce</p>
+            <p className='text-slate-700 text-3xl font-bold font-poppins'>
+              Repliq E-commerce
+            </p>
             <div className='flex lg:hidden'>
               <button
                 onClick={toggleMenu}
@@ -62,30 +65,30 @@ const Navbar = () => {
             }`}
           >
             <div className='flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8'>
-              <a
-                href='#'
+              <NavLink
+                to='/dashboard'
                 className='px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  hover:bg-gray-100 -700'
               >
-                Join Slack
-              </a>
-              <a
-                href='#'
+                Dashboard
+              </NavLink>
+              <NavLink
+                to='/customers'
                 className='px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  hover:bg-gray-100 -700'
               >
-                Browse Topics
-              </a>
-              <a
-                href='#'
+                Customers
+              </NavLink>
+              <NavLink
+                to=''
                 className='px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  hover:bg-gray-100 -700'
               >
-                Random Item
-              </a>
-              <a
-                href='#'
+                Products
+              </NavLink>
+              <NavLink
+                to='/products'
                 className='px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0  hover:bg-gray-100 -700'
               >
                 Experts
-              </a>
+              </NavLink>
             </div>
             <div className='flex items-center mt-4 lg:mt-0'>
               <button

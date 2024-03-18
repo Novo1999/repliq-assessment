@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import CarouselOne from '../../assets/carousel-1.jpg'
 import CarouselTwo from '../../assets/carousel-2.jpg'
@@ -7,16 +7,38 @@ import CarouselThree from '../../assets/carousel-3.jpg'
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(1)
 
-  const prevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === 1 ? 3 : prevSlide - 1))
-  }
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide === 3 ? 1 : prevSlide + 1))
+    }, 3000)
 
-  const nextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === 3 ? 1 : prevSlide + 1))
+    return () => clearInterval(interval)
+  }, [])
+
+  let text = null
+
+  if (currentSlide === 1) {
+    text = (
+      <p className='font-poppins text-xl sm:text-4xl lg:text-5xl text-slate-700'>
+        Shop the latest collection
+      </p>
+    )
+  } else if (currentSlide === 2) {
+    text = (
+      <p className='font-poppins text-xl sm:text-4xl lg:text-5xl text-slate-700'>
+        Get the best deals
+      </p>
+    )
+  } else {
+    text = (
+      <p className='font-poppins text-xl sm:text-4xl lg:text-5xl text-white'>
+        Shop from anywhere
+      </p>
+    )
   }
 
   return (
-    <div className='carousel w-full mb-10'>
+    <div className='carousel w-full mb-10 relative'>
       <div
         id='slide1'
         className={`carousel-item relative w-full ${
@@ -28,13 +50,11 @@ const Carousel = () => {
           className='w-full h-96 object-cover'
           alt='Carousel Slide 1'
         />
-        <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
-          <button onClick={prevSlide} className='btn btn-circle'>
-            ❮
-          </button>
-          <button onClick={nextSlide} className='btn btn-circle'>
-            ❯
-          </button>
+        <div className='absolute inset-0 flex justify-center items-center text-white font-bold text-xl'>
+          <div className='text-center'>
+            {text}
+            <button className='btn btn-info'>Shop Now</button>
+          </div>
         </div>
       </div>
       <div
@@ -48,13 +68,11 @@ const Carousel = () => {
           className='w-full h-96 object-cover'
           alt='Carousel Slide 2'
         />
-        <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
-          <button onClick={prevSlide} className='btn btn-circle'>
-            ❮
-          </button>
-          <button onClick={nextSlide} className='btn btn-circle'>
-            ❯
-          </button>
+        <div className='absolute inset-0 flex justify-center items-center text-white font-bold text-xl'>
+          <div className='text-center'>
+            {text}
+            <button className='btn btn-info'>Shop Now</button>
+          </div>
         </div>
       </div>
       <div
@@ -68,13 +86,11 @@ const Carousel = () => {
           className='w-full h-96 object-cover'
           alt='Carousel Slide 3'
         />
-        <div className='absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2'>
-          <button onClick={prevSlide} className='btn btn-circle'>
-            ❮
-          </button>
-          <button onClick={nextSlide} className='btn btn-circle'>
-            ❯
-          </button>
+        <div className='absolute inset-0 flex justify-center items-center text-white font-bold text-xl'>
+          <div className='text-center'>
+            {text}
+            <button className='btn btn-info'>Shop Now</button>
+          </div>
         </div>
       </div>
     </div>
