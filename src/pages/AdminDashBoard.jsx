@@ -1,21 +1,17 @@
+import { useState } from 'react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { IoMdAddCircle } from 'react-icons/io'
 import { Link } from 'react-router-dom'
+import CustomerFormModal from '../components/Dashboard/CustomerFormModal.jsx'
+import Customers from '../components/Dashboard/Customers.jsx'
 import PriceChart from '../components/Dashboard/PriceChart.jsx'
-import Error from '../components/misc/Error.jsx'
-import useGetCustomers from '../hooks/api/useGetCustomers.js'
 import useGetProducts from '../hooks/api/useGetProducts.js'
 
 const AdminDashboard = () => {
   const { data: { data } = {}, isLoading, isError } = useGetProducts()
-  const {
-    data: { data: customerData } = {},
-    isLoading: customerLoading,
-    isError: customerError,
-  } = useGetCustomers()
+  const [customerModalOpen, setCustomerModalOpen] = useState(false)
 
   let productLength = null
-  let customers = null
 
   if (isLoading) {
     productLength = <AiOutlineLoading3Quarters className='animate-spin' />
@@ -33,40 +29,8 @@ const AdminDashboard = () => {
     productLength = data.length
   }
 
-  if (customerLoading) {
-    customers = (
-      <tr>
-        <td>
-          <AiOutlineLoading3Quarters className='animate-spin' />
-        </td>
-      </tr>
-    )
-  }
-
-  if (!customerLoading && customerError) {
-    customers = <p className='text-red-400'>Error Getting customers</p>
-  }
-
-  if (!customerLoading && !customerError && customerData.length === 0) {
-    customers = (
-      <Error error={customerError} message='Could not get customers list' />
-    )
-  }
-
-  if (customerData?.length > 0) {
-    customers = customerData.map(({ name, email, id, address }) => {
-      return (
-        <tr key={id}>
-          <td className='px-6 py-4 whitespace-nowrap'>{name}</td>
-          <td className='px-6 py-4 whitespace-nowrap'>{email}</td>
-          <td className='px-6 py-4 whitespace-nowrap'>{address}</td>
-        </tr>
-      )
-    })
-  }
-
   return (
-    <div className='min-h-screen bg-gray-100'>
+    <div className='min-h-screen bg-gray-100 font-poppins'>
       {/* Header */}
       <header className='bg-white shadow-sm'>
         <div className='max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center'>
@@ -109,10 +73,19 @@ const AdminDashboard = () => {
           <div className='mt-8'>
             <div className='flex justify-between mb-4'>
               <h2 className='text-lg font-semibold mb-4'>Customers</h2>
-              <button className='btn btn-info'>
-                <IoMdAddCircle />
-                <p>Add Customer</p>
-              </button>
+              {/* add customer */}
+              <CustomerFormModal
+                isModalOpen={customerModalOpen}
+                setIsModalOpen={setCustomerModalOpen}
+              >
+                <button
+                  onClick={() => setCustomerModalOpen(true)}
+                  className='btn btn-info'
+                >
+                  <IoMdAddCircle />
+                  <p>Add Customer</p>
+                </button>
+              </CustomerFormModal>
             </div>
             <div className='bg-white rounded-lg shadow-md overflow-x-auto'>
               <table className='min-w-full divide-y divide-gray-200'>
@@ -132,7 +105,7 @@ const AdminDashboard = () => {
                 </thead>
                 {/* Table body (Sample data, replace with actual orders data) */}
                 <tbody className='bg-white divide-y divide-gray-200'>
-                  {customers}
+                  <Customers />
                 </tbody>
               </table>
             </div>

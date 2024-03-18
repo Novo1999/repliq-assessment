@@ -32,7 +32,7 @@ const PriceChart = ({ products }) => {
       {
         label: 'Price',
         data: products?.map((product) => product.price),
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: 'rgb(186, 22, 98)',
       },
     ],
   }
