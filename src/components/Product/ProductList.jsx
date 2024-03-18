@@ -12,6 +12,7 @@ const ProductList = () => {
   if (isLoading) {
     content = (
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
+        {/* showing 10 skeletons by default */}
         {Array.from({ length: 10 }).map((_, index) => {
           return <ProductSkeleton key={index} />
         })}
