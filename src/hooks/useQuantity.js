@@ -38,6 +38,11 @@ const useQuantity = () => {
       }
     })
   }
-  return { productQuantity, handleIncreaseQuantity, handleDecreaseQuantity }
+  return {
+    productQuantity,
+    handleIncreaseQuantity,
+    handleDecreaseQuantity,
+    setProductQuantity,
+  }
 }
 export default useQuantity
