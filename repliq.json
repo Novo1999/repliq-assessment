@@ -1,0 +1,82 @@
+[
+  {
+    "id": "c3d4e5f6",
+    "name": "Men's T-Shirt",
+    "price": 19.99,
+    "category": "Clothing",
+    "description": "A comfortable and stylish t-shirt for men.",
+    "stock": 50
+  },
+  {
+    "id": "a1b2c3d4",
+    "name": "Women's Jeans",
+    "price": 39.99,
+    "category": "Clothing",
+    "description": "High-quality jeans for women, available in various sizes.",
+    "stock": 30
+  },
+  {
+    "id": "e7f8g9h0",
+    "name": "Wireless Headphones",
+    "price": 59.99,
+    "category": "Electronics",
+    "description": "Bluetooth headphones with noise-cancelling technology.",
+    "stock": 20
+  },
+  {
+    "id": "1a2b3c4d",
+    "name": "Smartphone",
+    "price": 399.99,
+    "category": "Electronics",
+    "description": "A powerful smartphone with a large display and fast processor.",
+    "stock": 15
+  },
+  {
+    "id": "5e6f7g8h",
+    "name": "Running Shoes",
+    "price": 79.99,
+    "category": "Footwear",
+    "description": "Lightweight and durable running shoes for athletes.",
+    "stock": 40
+  },
+  {
+    "id": "9i0j1k2l",
+    "name": "Laptop",
+    "price": 899.99,
+    "category": "Electronics",
+    "description": "Thin and powerful laptop for work and entertainment.",
+    "stock": 10
+  },
+  {
+    "id": "m3n4o5p6",
+    "name": "Dress Shirt",
+    "price": 49.99,
+    "category": "Clothing",
+    "description": "Formal dress shirt made from premium materials.",
+    "stock": 25
+  },
+  {
+    "id": "q7r8s9t0",
+    "name": "Coffee Maker",
+    "price": 29.99,
+    "category": "Appliances",
+    "description": "Easy-to-use coffee maker for brewing delicious coffee at home.",
+    "stock": 35
+  },
+  {
+    "id": "u1v2w3x4",
+    "name": "Backpack",
+    "price": 49.99,
+    "category": "Accessories",
+    "description": "Stylish and spacious backpack for everyday use.",
+    "stock": 20
+  },
+  {
+    "id": "y5z6a7b8",
+    "name": "Fitness Tracker",
+    "price": 69.99,
+    "category": "Electronics",
+    "description": "Track your fitness goals with this advanced fitness tracker.",
+    "stock": 30
+  }
+]
