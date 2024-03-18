@@ -1,16 +1,10 @@
-import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci'
 import ProductImg from '../../assets/product.jpeg'
 import useCartContext from '../../hooks/useCartContext.js'
 import useQuantity from '../../hooks/useQuantity.js'
 import handleAddToCart from '../../utils/handleAddToCart.js'
 
 const ModalCard = ({ product }) => {
-  const {
-    productQuantity,
-    handleIncreaseQuantity,
-    handleDecreaseQuantity,
-    setProductQuantity,
-  } = useQuantity()
+  const { productQuantity, setProductQuantity } = useQuantity()
   const { id, category, description, name, price, rating } = product
   const hasQuantity = productQuantity.find((item) => item.id === id)
   const { setCart } = useCartContext()
@@ -46,27 +40,6 @@ const ModalCard = ({ product }) => {
           <div className='text-md rounded-xl p-1 text-black bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer'>
             {category}
           </div>
-        </div>
-        <div className='flex justify-between items-center'>
-          <div>
-            <button
-              onClick={() => handleDecreaseQuantity(id)}
-              value='minus'
-              key='minus'
-              className='btn btn-circle bg-blue-500 hover:bg-red-500 text-white text-4xl btn-outline'
-            >
-              <CiCircleMinus />
-            </button>
-            <button
-              value='plus'
-              onClick={() => handleIncreaseQuantity(id)}
-              key='plus'
-              className='btn btn-circle bg-blue-500 hover:bg-green-500 text-white text-4xl btn-outline plus'
-            >
-              <CiCirclePlus />
-            </button>
-          </div>
-          <p className='text-lg'>Quantity: {hasQuantity?.quantity ?? 0}</p>
         </div>
         <div className='flex justify-between mt-3 item-center'>
           <h1 className='text-lg font-bold text-gray-700 md:text-xl'>

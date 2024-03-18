@@ -17,28 +17,6 @@ const Carousel = () => {
     return () => clearInterval(interval)
   }, [])
 
-  let text = null
-
-  if (currentSlide === 1) {
-    text = (
-      <p className='font-poppins text-xl sm:text-4xl lg:text-5xl text-slate-700'>
-        Shop the latest collection
-      </p>
-    )
-  } else if (currentSlide === 2) {
-    text = (
-      <p className='font-poppins text-xl sm:text-4xl lg:text-5xl text-slate-700'>
-        Get the best deals
-      </p>
-    )
-  } else {
-    text = (
-      <p className='font-poppins text-xl sm:text-4xl lg:text-5xl text-white'>
-        Shop from anywhere
-      </p>
-    )
-  }
-
   return (
     <div className='carousel w-full mb-10 relative'>
       <div
@@ -52,9 +30,6 @@ const Carousel = () => {
           className='w-full h-96 object-cover'
           alt='Carousel Slide 1'
         />
-        <div className='absolute inset-0 flex justify-center items-center text-white font-bold text-xl'>
-          <div className='text-center'>{text}</div>
-        </div>
       </div>
       <div
         id='slide2'
@@ -67,9 +42,6 @@ const Carousel = () => {
           className='w-full h-96 object-cover'
           alt='Carousel Slide 2'
         />
-        <div className='absolute inset-0 flex justify-center items-center text-white font-bold text-xl'>
-          <div className='text-center'>{text}</div>
-        </div>
       </div>
       <div
         id='slide3'
@@ -82,8 +54,10 @@ const Carousel = () => {
           className='w-full h-96 object-cover'
           alt='Carousel Slide 3'
         />
-        <div className='absolute inset-0 flex justify-center items-center text-white font-bold text-xl'>
-          <div className='text-center'>{text}</div>
+      </div>
+      <div className='absolute inset-0 flex justify-center items-center font-bold text-xl sm:text-3xl lg:text-5xl text-white'>
+        <div className='text-center bg-gray-900 rounded-md p-2'>
+          Hi there, Admin
         </div>
       </div>
       <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
@@ -91,7 +65,7 @@ const Carousel = () => {
           onClick={() => window.scrollTo({ top: 312, behavior: 'smooth' })}
           className='btn btn-info relative bottom-20'
         >
-          Shop Now
+          Check Products
         </button>
       </div>
     </div>

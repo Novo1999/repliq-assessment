@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ImCart } from 'react-icons/im'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import useCartContext from '../../hooks/useCartContext.js'
 import CartDrawer from '../Cart/CartDrawer.jsx'
 import Navlink from './Navlink.jsx'
@@ -75,7 +75,7 @@ const Navbar = () => {
           >
             <div className='flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8'>
               <Navlink to='/dashboard'>Dashboard</Navlink>
-              <Navlink to='/'>xx</Navlink>
+              <Navlink to='/orders'>Orders</Navlink>
               <Navlink to='/'>xx</Navlink>
               <Navlink to='/'>xx</Navlink>
             </div>
@@ -88,7 +88,12 @@ const Navbar = () => {
                   <ImCart className='text-2xl' />
                   {cart.length ? (
                     <div className='rounded-full bg-green-400 absolute top-3 left-3 size-5'>
-                      {cart.length}
+                      {/* total cart items */}
+                      {
+                        cart.reduce((acc, curr) => {
+                          return [...acc, ...curr.items]
+                        }, []).length
+                      }
                     </div>
                   ) : null}
                 </div>
