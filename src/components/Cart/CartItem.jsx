@@ -1,39 +1,15 @@
-import { toast } from 'react-toastify'
 import ProductImg from '../../assets/product.jpeg'
-import useCartContext from '../../hooks/useCartContext.js'
+import useCart from '../../hooks/useCart.js'
 import { DeleteSVG, MinusSVG, PlusSVG } from '../ui/SVG.jsx'
 
 const CartItem = ({ product }) => {
   const { id, name, description, price, quantity } = product
-  const { setCart } = useCartContext()
 
-  const handleIncreaseCartItemQuantity = () => {
-    setCart((prevCart) => {
-      const updatedCart = prevCart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-      return updatedCart
-    })
-  }
-  const handleDecreaseCartItemQuantity = () => {
-    setCart((prevCart) => {
-      const updatedCart = prevCart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-      )
-
-      // filter out the item if its quantity becomes 0
-      return updatedCart.filter((item) => item.quantity !== 0)
-    })
-  }
-
-  const handleDeleteCartItem = () => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id))
-    toast.info(name + ' deleted from cart', {
-      autoClose: 1000,
-      position: 'bottom-right',
-    })
-  }
-
+  const {
+    handleDecreaseCartItemQuantity,
+    handleIncreaseCartItemQuantity,
+    handleDeleteCartItem,
+  } = useCart(id)
   return (
     <div className='rounded-3xl border-2 border-gray-200 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 '>
       <div className='col-span-12 lg:col-span-2 img box'>

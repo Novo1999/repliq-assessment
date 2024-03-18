@@ -88,7 +88,7 @@ const Carousel = () => {
       </div>
       <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
         <button
-          onClick={() => window.scrollTo({ top: 500, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 312, behavior: 'smooth' })}
           className='btn btn-info relative bottom-20'
         >
           Shop Now

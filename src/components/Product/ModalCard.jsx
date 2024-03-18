@@ -1,12 +1,27 @@
 import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci'
 import ProductImg from '../../assets/product.jpeg'
+import useCartContext from '../../hooks/useCartContext.js'
 import useQuantity from '../../hooks/useQuantity.js'
+import handleAddToCart from '../../utils/handleAddToCart.js'
 
 const ModalCard = ({ product }) => {
-  const { productQuantity, handleIncreaseQuantity, handleDecreaseQuantity } =
-    useQuantity()
+  const {
+    productQuantity,
+    handleIncreaseQuantity,
+    handleDecreaseQuantity,
+    setProductQuantity,
+  } = useQuantity()
   const { id, category, description, name, price, rating } = product
   const hasQuantity = productQuantity.find((item) => item.id === id)
+  const { setCart } = useCartContext()
+  const ADD_CART_PARAMETERS = {
+    setCart,
+    id,
+    productQuantity,
+    product,
+    setProductQuantity,
+    name,
+  }
 
   return (
     <div className='flex w-full flex-col md:flex-row overflow-hidden bg-white rounded-lg h-fit font-poppins'>
@@ -58,7 +73,10 @@ const ModalCard = ({ product }) => {
             ${price}
           </h1>
           {hasQuantity && (
-            <button className='p-4 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600'>
+            <button
+              onClick={() => handleAddToCart(ADD_CART_PARAMETERS)}
+              className='p-4 text-xs font-bold text-white uppercase transition-colors duration-300 transform bg-gray-800 rounded dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-700 dark:focus:bg-gray-600'
+            >
               Add to Cart
             </button>
           )}

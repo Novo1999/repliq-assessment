@@ -2,10 +2,10 @@ import { Card } from 'antd'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { CiCircleMinus, CiCirclePlus } from 'react-icons/ci'
-import { toast } from 'react-toastify'
 import ProductImg from '../../assets/product.jpeg'
 import useCartContext from '../../hooks/useCartContext.js'
 import useQuantity from '../../hooks/useQuantity.js'
+import handleAddToCart from '../../utils/handleAddToCart.js'
 import ProductModal from './ProductModal.jsx'
 const { Meta } = Card
 
@@ -17,40 +17,19 @@ const Product = ({ product }) => {
     setProductQuantity,
     handleDecreaseQuantity,
   } = useQuantity()
-
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   // check which product has quantity to show add to cart button based on this
   const hasQuantity = productQuantity.find((item) => item.id === id)
 
   const { setCart } = useCartContext()
-
-  const handleAddToCart = () => {
-    setCart((prevCart) => {
-      // if item exists, increase its quantity only
-      const exists = prevCart.find((item) => item.id === id)
-      if (exists) {
-        const updatedCart = prevCart.map((item) =>
-          item.id === id
-            ? { ...item, quantity: item.quantity + productQuantity[0].quantity }
-            : item
-        )
-        return updatedCart
-      } else {
-        return [
-          ...prevCart,
-          { ...product, quantity: productQuantity[0].quantity },
-        ]
-      }
-    })
-    toast.success(name + ' Added to cart', {
-      autoClose: 1000,
-      position: 'bottom-right',
-    })
-    console.log(productQuantity)
-    setProductQuantity((prevQuantity) =>
-      prevQuantity.filter((item) => item.id !== id)
-    )
+  const ADD_CART_PARAMETERS = {
+    setCart,
+    id,
+    productQuantity,
+    product,
+    setProductQuantity,
+    name,
   }
 
   return (
@@ -82,7 +61,7 @@ const Product = ({ product }) => {
             <p className='text-stone-700'>{hasQuantity?.quantity ?? 0}</p>
             {hasQuantity?.quantity && (
               <button
-                onClick={handleAddToCart}
+                onClick={() => handleAddToCart(ADD_CART_PARAMETERS)}
                 className='btn text-sm btn-accent'
               >
                 Add To Cart

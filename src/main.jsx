@@ -1,9 +1,10 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
+import Checkout from './pages/Checkout.jsx'
 
 const queryClient = new QueryClient()
 
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+  },
+  {
+    path: '/checkout',
+    element: <Checkout />,
   },
 ])
 
