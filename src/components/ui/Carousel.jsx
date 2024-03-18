@@ -8,10 +8,12 @@ const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(1)
 
   useEffect(() => {
+    // change image every 3 seconds
     const interval = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide === 3 ? 1 : prevSlide + 1))
     }, 3000)
 
+    // cleanup
     return () => clearInterval(interval)
   }, [])
 
@@ -51,10 +53,7 @@ const Carousel = () => {
           alt='Carousel Slide 1'
         />
         <div className='absolute inset-0 flex justify-center items-center text-white font-bold text-xl'>
-          <div className='text-center'>
-            {text}
-            <button className='btn btn-info'>Shop Now</button>
-          </div>
+          <div className='text-center'>{text}</div>
         </div>
       </div>
       <div
@@ -69,10 +68,7 @@ const Carousel = () => {
           alt='Carousel Slide 2'
         />
         <div className='absolute inset-0 flex justify-center items-center text-white font-bold text-xl'>
-          <div className='text-center'>
-            {text}
-            <button className='btn btn-info'>Shop Now</button>
-          </div>
+          <div className='text-center'>{text}</div>
         </div>
       </div>
       <div
@@ -87,11 +83,16 @@ const Carousel = () => {
           alt='Carousel Slide 3'
         />
         <div className='absolute inset-0 flex justify-center items-center text-white font-bold text-xl'>
-          <div className='text-center'>
-            {text}
-            <button className='btn btn-info'>Shop Now</button>
-          </div>
+          <div className='text-center'>{text}</div>
         </div>
+      </div>
+      <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+        <button
+          onClick={() => window.scrollTo({ top: 500, behavior: 'smooth' })}
+          className='btn btn-info relative bottom-20'
+        >
+          Shop Now
+        </button>
       </div>
     </div>
   )

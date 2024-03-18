@@ -1,3 +1,5 @@
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import ProductContainer from './components/Product/ProductContainer.jsx'
 import ProductList from './components/Product/ProductList.jsx'
 import Carousel from './components/ui/Carousel.jsx'
@@ -11,6 +13,7 @@ function App() {
       <ProductContainer>
         <ProductList />
       </ProductContainer>
+      <ToastContainer />
     </>
   )
 }
