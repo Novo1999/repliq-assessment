@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 import Checkout from './pages/Checkout.jsx'
+import CartProvider from './providers/CartProviders.jsx'
 
 const queryClient = new QueryClient()
 
@@ -22,7 +23,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </QueryClientProvider>
   </React.StrictMode>
 )

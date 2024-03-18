@@ -1,7 +1,9 @@
 import { Button, Drawer, Space } from 'antd'
 import { useState } from 'react'
 import { ImSad } from 'react-icons/im'
+import { Link } from 'react-router-dom'
 import useCartContext from '../../hooks/useCartContext.js'
+import { calculateCartTotal } from '../../utils/calculateCartTotal.js'
 import CartItem from './CartItem.jsx'
 const CartDrawer = ({ children }) => {
   const { cart } = useCartContext()
@@ -41,12 +43,7 @@ const CartDrawer = ({ children }) => {
                 </h5>
                 <div className='flex items-center justify-between gap-5 '>
                   <h6 className='font-manrope font-bold text-3xl lead-10 text-indigo-600'>
-                    $
-                    {cart
-                      .reduce((acc, curr) => {
-                        return acc + curr.quantity * curr.price
-                      }, 0)
-                      .toFixed(2)}
+                    ${calculateCartTotal(cart)}
                   </h6>
                 </div>
               </div>
@@ -56,9 +53,12 @@ const CartDrawer = ({ children }) => {
                 <p className='font-normal text-base leading-7 text-gray-500 text-center mb-5 mt-6'>
                   Shipping taxes, and discounts calculated at checkout
                 </p>
-                <button className='rounded-full py-4 px-6 bg-indigo-600 text-white font-semibold text-lg w-full text-center transition-all duration-500 hover:bg-indigo-700 '>
+                <Link
+                  to='/checkout'
+                  className='rounded-full py-4 px-6 bg-indigo-600 text-white font-semibold text-lg w-full flex justify-center text-center transition-all duration-500 hover:bg-indigo-700 '
+                >
                   Checkout
-                </button>
+                </Link>
               </div>
             ) : (
               <div className='flex items-center justify-center gap-2'>
