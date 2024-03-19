@@ -1,14 +1,13 @@
 import { Button, Select } from 'antd'
 import { useForm } from 'react-hook-form'
+import getUniqueCategories from '../../utils/getUniqueCategories.js'
 import FileUpload from './FileUpload.jsx'
 
 const { Option } = Select
 
 const ProductForm = ({ products }) => {
   // getting unique categories
-  const categories = Array.from(
-    new Set(products?.map((product) => product.category))
-  )
+  const categories = getUniqueCategories(products)
   const {
     register,
     handleSubmit,
