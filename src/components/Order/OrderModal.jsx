@@ -26,13 +26,14 @@ const OrderModal = ({ isModalOpen, setIsModalOpen, children, order }) => {
         okButtonProps={{ style: { display: 'none' } }}
         cancelButtonProps={{ style: { display: 'none' } }}
         centered
+        className='!w-96'
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <div className='card max-w-[28rem] font-poppins'>
+        <div className='card w-fit font-poppins m-auto'>
           <figure>
-            <img className='w-fit' src={Avatar} alt='Shoes' />
+            <img className='size-60' src={Avatar} alt='Shoes' />
           </figure>
           <div className='card-body'>
             <h2 className='card-title'>{customerName}</h2>

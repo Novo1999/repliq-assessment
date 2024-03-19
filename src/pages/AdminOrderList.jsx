@@ -1,11 +1,11 @@
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import OrderContent from '../components/Order/OrderContent.jsx'
+import Loader from '../components/ui/Loader.jsx'
 import useGetOrders from '../hooks/api/useGetOrders.js'
 import { setOrderStatsBg } from '../utils/setOrderStatusBg.js'
 
 const AdminOrderList = () => {
   const { data: { data } = {}, isLoading, isError } = useGetOrders()
-
   let content = null
 
   if (isLoading) {
@@ -50,7 +50,11 @@ const AdminOrderList = () => {
     ))
   }
 
-  return (
+  return isLoading ? (
+    <div className='bg-white *:text-7xl flex justify-center items-center min-h-screen'>
+      <Loader />
+    </div>
+  ) : (
     <div className='container mx-auto px-4 py-8 font-poppins'>
       <h1 className='text-3xl font-semibold mb-4'>Admin Order List</h1>
       {data?.length === 0 ? (

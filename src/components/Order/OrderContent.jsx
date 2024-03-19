@@ -13,7 +13,6 @@ const OrderContent = ({ order }) => {
       >
         <button className='btn btn-info mr-2'>View Details</button>
       </OrderModal>
-      <button className='btn btn-danger'>Delete</button>
     </td>
   )
 }

@@ -81,7 +81,7 @@ const Navbar = () => {
               <Navlink to='/'>Home</Navlink>
               <Navlink to='/dashboard'>Dashboard</Navlink>
               <Navlink to='/orders'>Orders</Navlink>
-              <Navlink to='/add-new'>Add New Product</Navlink>
+              <Navlink to='/products'>Products</Navlink>
             </div>
             <div className='items-center mt-4 lg:mt-0 hidden lg:flex'>
               <CartDrawer>

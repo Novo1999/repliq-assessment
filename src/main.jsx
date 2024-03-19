@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         element: <AdminOrderList />,
       },
       {
-        path: 'add-new',
+        path: 'products',
         element: <AddProduct />,
       },
     ],

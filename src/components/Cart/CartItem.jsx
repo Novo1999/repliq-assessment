@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { AiFillDollarCircle } from 'react-icons/ai'
 import ProductImg from '../../assets/product.jpeg'
 import useCartContext from '../../hooks/useCartContext.js'
 import { DeleteSVG } from '../ui/SVG.jsx'
@@ -35,7 +36,7 @@ const CartItem = ({ selectedCustomer }) => {
             transition={{ type: 'tween', duration: 0.2 }}
             key={item.productId}
           >
-            <div className='rounded-3xl border-2 border-gray-200 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 '>
+            <div className='rounded-3xl border-2 border-gray-200 bg-blue-500 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 '>
               <div className='col-span-12 lg:col-span-2 img box'>
                 <img
                   src={ProductImg}
@@ -55,12 +56,14 @@ const CartItem = ({ selectedCustomer }) => {
                     <DeleteSVG />
                   </button>
                 </div>
-                <p className='font-normal text-base leading-7 text-gray-500 mb-6'>
-                  {item.price}
-                </p>
+                <div className='font-normal flex items-center gap-2 text-base leading-7 text-gray-100 mb-6'>
+                  <AiFillDollarCircle />
+                  <p> {item.price}</p>
+                  <p> X {item.quantity} </p>
+                </div>
                 <div className='flex justify-between items-center'>
-                  <h6 className='text-indigo-600 font-manrope font-bold text-2xl leading-9 text-right'>
-                    ${(item.price * item.quantity).toFixed(2)}
+                  <h6 className='text-white font-manrope font-bold text-2xl leading-9 text-right'>
+                    Total: ${(item.price * item.quantity).toFixed(2)}
                   </h6>
                 </div>
               </div>
@@ -68,6 +71,15 @@ const CartItem = ({ selectedCustomer }) => {
           </motion.div>
         )
       })}
+      {/* sub total */}
+      {selectedCustomerItems.items.length && (
+        <p key='total' className='text-green-600 font-poppins text-xl'>
+          Subtotal: $
+          {selectedCustomerItems.items.reduce((acc, curr) => {
+            return acc + curr.price * curr.quantity
+          }, 0)}
+        </p>
+      )}
       <p className='font-poppins text-center'>
         {selectedCustomerItems.items.length < 1 && 'User has no item'}
       </p>
