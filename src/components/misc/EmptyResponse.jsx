@@ -13,7 +13,7 @@ const EmptyResponse = ({ message }) => {
       <div className='px-4 py-2 -mx-3'>
         <div className='mx-3'>
           <span className='font-semibold text-blue-500 dark:text-blue-400'>
-            Dukkho Jonok 😟
+            Empty 😟
           </span>
           <p className='text-sm text-gray-600 dark:text-gray-200'>{message}</p>
         </div>

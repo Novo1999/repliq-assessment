@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 import useGetProducts from '../../hooks/api/useGetProducts.js'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver.js'
+import useProductContext from '../../hooks/useProductContext.js'
 import EmptyResponse from '../misc/EmptyResponse.jsx'
 import Error from '../misc/Error.jsx'
 import ProductSkeleton from '../misc/ProductSkeleton.jsx'
@@ -10,6 +12,14 @@ import Product from './Product.jsx'
 const ProductList = () => {
   const { data: { data } = {}, isLoading, isError, error } = useGetProducts()
   const { loaderRef, limit, hasMore } = useIntersectionObserver(data)
+  const { setProducts } = useProductContext()
+
+  // set product context on load
+  useEffect(() => {
+    if (!isLoading && !isError && data?.length > 0) {
+      setProducts(data)
+    }
+  }, [data, isError, isLoading, setProducts])
 
   let content = null
 
@@ -18,7 +28,16 @@ const ProductList = () => {
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
         {/* showing 10 skeletons by default */}
         {Array.from({ length: 10 }).map((_, index) => {
-          return <ProductSkeleton key={index} />
+          return (
+            <motion.div
+              key={index}
+              layout
+              initial={{ y: 300, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+            >
+              <ProductSkeleton />
+            </motion.div>
+          )
         })}
       </div>
     )
@@ -36,6 +55,7 @@ const ProductList = () => {
     content = (
       <>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-y-10 pb-40'>
+          {/* show 10 products initially and load more as user scrolls */}
           {data?.slice(0, limit).map((product) => (
             <motion.div
               key={product.id}

@@ -6,16 +6,19 @@ import ScrollProgress from './components/ui/ScrollProgress.jsx'
 import ScrollToTop from './components/ui/ScrollToTop.jsx'
 import AuthProvider from './providers/AuthProvider.jsx'
 import CartProvider from './providers/CartProviders.jsx'
+import ProductProvider from './providers/ProductProvider.jsx'
 
 function App() {
   return (
     <AuthProvider>
-      <CartProvider>
-        <ScrollToTop />
-        <ScrollProgress />
-        <Navbar />
-        <Outlet />
-      </CartProvider>
+      <ProductProvider>
+        <CartProvider>
+          <ScrollToTop />
+          <ScrollProgress />
+          <Navbar />
+          <Outlet />
+        </CartProvider>
+      </ProductProvider>
     </AuthProvider>
   )
 }
