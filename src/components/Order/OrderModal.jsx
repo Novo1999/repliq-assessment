@@ -1,5 +1,6 @@
 import { Modal } from 'antd'
 import Avatar from '../../assets/avatar.png'
+import { setOrderStatsBg } from '../../utils/setOrderStatusBg.js'
 
 const OrderModal = ({ isModalOpen, setIsModalOpen, children, order }) => {
   const { customerName, status, totalAmount } = order
@@ -35,7 +36,9 @@ const OrderModal = ({ isModalOpen, setIsModalOpen, children, order }) => {
           </figure>
           <div className='card-body'>
             <h2 className='card-title'>{customerName}</h2>
-            <p>Status: {status}</p>
+            <p className={`${setOrderStatsBg(order)} w-fit p-1 text-white`}>
+              Status: {status}
+            </p>
             <p className='text-blue-500'>Amount: ${totalAmount}</p>
           </div>
         </div>
