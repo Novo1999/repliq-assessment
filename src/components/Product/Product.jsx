@@ -2,11 +2,27 @@ import { Card } from 'antd'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import ProductImg from '../../assets/product.jpeg'
+import useGetProducts from '../../hooks/api/useGetProducts.js'
+import useCategoryContext from '../../hooks/useCategoryContext.js'
+import useProductContext from '../../hooks/useProductContext.js'
 import ProductModal from './ProductModal.jsx'
 const { Meta } = Card
 
 const Product = ({ product }) => {
   const { category, description, name, price } = product
+  const { data: { data } = {} } = useGetProducts()
+  const { setIsFiltering } = useCategoryContext()
+  const { setProducts } = useProductContext()
+
+  const handleChangeCategory = (category) => {
+    if (category) {
+      setIsFiltering(true)
+      window.scroll({ top: 200, behavior: 'smooth' })
+    }
+    setProducts(() => {
+      return data.filter((product) => product.category === category)
+    })
+  }
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -37,7 +53,11 @@ const Product = ({ product }) => {
           <div className='flex justify-between mt-6'>
             <p className='text-xl text-blue-500'>Price: ${price}</p>
             <div
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation()
+                setIsFiltering(true)
+                handleChangeCategory(category)
+              }}
               className='text-md rounded-xl p-1 text-xs flex justify-center items-center text-black bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer'
             >
               {category}

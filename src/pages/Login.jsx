@@ -11,8 +11,7 @@ const Login = () => {
     formState: { errors },
     setError,
   } = useForm()
-  const { setUser, users, user } = useAuthContext()
-  console.log(user)
+  const { setUser, users } = useAuthContext()
   const handleLogin = (data) => {
     const { username, email } = data
 
@@ -29,7 +28,6 @@ const Login = () => {
   }
 
   const onSubmit = (data) => {
-    console.log(data)
     handleLogin(data)
   }
   return (

@@ -87,9 +87,11 @@ const CartItem = ({ selectedCustomer }) => {
       {selectedCustomerItems.items.length && (
         <p key='total' className='text-green-600 font-poppins text-xl'>
           Subtotal: $
-          {selectedCustomerItems.items.reduce((acc, curr) => {
-            return acc + curr.price * curr.quantity
-          }, 0)}
+          {selectedCustomerItems.items
+            .reduce((acc, curr) => {
+              return acc + curr.price * curr.quantity
+            }, 0)
+            .toFixed(2)}
         </p>
       )}
       <p className='font-poppins text-center'>

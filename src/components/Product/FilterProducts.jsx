@@ -1,32 +1,23 @@
 import { motion } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import useGetProducts from '../../hooks/api/useGetProducts.js'
+import useCategoryContext from '../../hooks/useCategoryContext.js'
 import useDropdownAnimation from '../../hooks/useDropdownAnimation.js'
 import useProductContext from '../../hooks/useProductContext.js'
-import getUniqueCategories from '../../utils/getUniqueCategories.js'
-
-const MenuListItem = ({ children, onClick }) => {
-  return (
-    <li
-      onClick={onClick}
-      className='text-black flex-start block p-3 pl-4 transform origin-left translate-x-20 cursor-pointer hover:bg-slate-400 border-none bg-white duration-300'
-    >
-      {children}
-    </li>
-  )
-}
+import MenuListItem from '../ui/MenuListItem.jsx'
 
 const FilterProducts = ({ isOpen, setIsOpen }) => {
   const { products, setProducts } = useProductContext()
   const { data: { data } = {} } = useGetProducts()
-  const categories = getUniqueCategories(data)
   const scope = useDropdownAnimation(isOpen, products)
   const menuRef = useRef(null)
-  const [isFiltering, setIsFiltering] = useState(false)
+
+  const { categories, isFiltering, setIsFiltering } = useCategoryContext()
 
   const handleChangeCategory = (category) => {
     if (category) {
       setIsFiltering(true)
+      window.scroll({ top: 200, behavior: 'smooth' })
     }
     setProducts(() => {
       return data.filter((product) => product.category === category)
