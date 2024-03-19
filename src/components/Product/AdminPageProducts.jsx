@@ -6,7 +6,7 @@ import { DeleteSVG } from '../ui/SVG.jsx'
 
 const AdminPageProducts = ({ data }) => {
   return (
-    <div className='flex flex-col ml-48 gap-4'>
+    <div className='flex flex-col gap-4'>
       {data?.map(({ id, name, category, description, price, rating }) => (
         <Row key={id} gutter={16}>
           <Col span={8}>

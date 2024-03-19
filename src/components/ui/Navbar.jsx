@@ -15,7 +15,7 @@ const Navbar = () => {
   const { cart } = useCartContext()
 
   return (
-    <nav className='fixed z-[99] w-full top-0 bg-white shadow-lg'>
+    <nav className='fixed z-[99] w-full top-0 bg-white shadow-lg font-poppins'>
       <div className='container px-6 py-4 mx-auto'>
         <div className='lg:flex lg:items-center lg:justify-between'>
           <div className='flex items-center justify-between'>
@@ -74,6 +74,7 @@ const Navbar = () => {
             }`}
           >
             <div className='flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8'>
+              <Navlink to='/'>Home</Navlink>
               <Navlink to='/dashboard'>Dashboard</Navlink>
               <Navlink to='/orders'>Orders</Navlink>
               <Navlink to='/add-new'>Add New Product</Navlink>

@@ -4,17 +4,17 @@ import FileUpload from './FileUpload.jsx'
 
 const { Option } = Select
 
-const categories = ['Category 1', 'Category 2', 'Category 3']
-
-const ProductForm = () => {
+const ProductForm = ({ products }) => {
+  // getting unique categories
+  const categories = Array.from(
+    new Set(products?.map((product) => product.category))
+  )
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-    watch,
   } = useForm()
-  console.log(watch('category'))
   const onSubmit = (data) => {
     console.log(data)
   }
@@ -22,8 +22,9 @@ const ProductForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='w-96 mx-auto space-y-2 bg-white p-10 h-fit mt-48 rounded-lg shadow-xl'
+      className='w-96 space-y-2 bg-white p-10 h-fit mt-48 rounded-lg shadow-xl re'
     >
+      <p className='text-center text-2xl text-black'>Add New Product</p>
       <label htmlFor='Product Image' className='block text-center'>
         Product Image
       </label>
@@ -40,24 +41,26 @@ const ProductForm = () => {
       <label htmlFor='Price'>Price</label>
       <input
         className='mb-4 w-full p-2 border rounded-md bg-white focus:ring outline-none text-black'
-        placeholder='Name'
+        placeholder='Price'
+        type='number'
         {...register('price', { required: 'Price is required' })}
       />
       <p className='text-red-500'>{errors.price?.message}</p>
       <label htmlFor='Stock'>Stock</label>
       <input
         className='mb-4 w-full p-2 border rounded-md bg-white focus:ring outline-none text-black'
-        placeholder='Name'
+        placeholder='Stock'
+        type='number'
         {...register('stock', { required: 'Stock is required' })}
       />
       <p className='text-red-500'>{errors.stock?.message}</p>
       <label htmlFor='Category'>Category</label>
       <Select
         className='mb-4 w-full'
-        defaultValue={categories[0]}
+        defaultValue='Clothing'
         onChange={(value) => setValue('category', value)}
       >
-        {categories.map((category, index) => (
+        {categories?.map((category, index) => (
           <Option key={index} value={category}>
             {category}
           </Option>

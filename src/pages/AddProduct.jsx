@@ -10,11 +10,7 @@ const AddProduct = () => {
   let content = null
 
   if (isLoading) {
-    content = (
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
-        Loading...
-      </div>
-    )
+    content = <div>Loading...</div>
   }
 
   if (!isLoading && isError) {
@@ -30,9 +26,9 @@ const AddProduct = () => {
   }
 
   return (
-    <main className='flex bg-white min-h-screen pb-20'>
-      <div className='mt-24'>{content}</div>
-      <ProductForm />
+    <main className='flex bg-white min-h-screen flex-col items-center lg:items-start pb-20 lg:flex-row font-poppins justify-evenly p-10'>
+      <div className='mt-32'>{content}</div>
+      <ProductForm products={data} />
     </main>
   )
 }
