@@ -10,6 +10,7 @@ import useGetProducts from '../hooks/api/useGetProducts.js'
 const AdminDashboard = () => {
   const { data: { data } = {}, isLoading, isError } = useGetProducts()
   const [customerModalOpen, setCustomerModalOpen] = useState(false)
+  const { data: { data: orderData } = {} } = useGetProducts()
 
   let productLength = null
 
@@ -65,7 +66,13 @@ const AdminDashboard = () => {
             {/* Card 2 */}
             <div className='bg-white rounded-lg shadow-md p-6'>
               <h2 className='text-lg font-semibold mb-2'>Total Orders</h2>
-              <div className='text-3xl font-bold text-gray-800'>50</div>
+              <div className='text-3xl font-bold text-gray-800'>
+                {!orderData ? (
+                  <AiOutlineLoading3Quarters className='animate-spin' />
+                ) : (
+                  orderData?.length
+                )}
+              </div>
             </div>
             {/* Add more cards for different metrics */}
           </div>

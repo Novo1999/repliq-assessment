@@ -22,7 +22,7 @@ const CartDrawer = ({ children }) => {
         </Button>
       </Space>
       <Drawer
-        title='Cart'
+        title='User Carts'
         placement='right'
         width={500}
         onClose={onClose}

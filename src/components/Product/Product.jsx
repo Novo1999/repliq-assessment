@@ -38,7 +38,7 @@ const Product = ({ product }) => {
             <p className='text-xl text-blue-500'>Price: ${price}</p>
             <div
               onClick={(e) => e.stopPropagation()}
-              className='text-md rounded-xl p-1 text-black bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer'
+              className='text-md rounded-xl p-1 text-xs flex justify-center items-center text-black bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer'
             >
               {category}
             </div>

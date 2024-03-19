@@ -8,15 +8,16 @@ import Navlink from './Navlink.jsx'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const { cart } = useCartContext()
+
+  const {
+    user: { accessToken },
+  } = useAuthContext()
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
 
-  const { cart } = useCartContext()
-  const {
-    user: { accessToken },
-  } = useAuthContext()
   return (
     <nav className='fixed z-[99] w-full top-0 bg-white shadow-lg font-poppins'>
       <div className='container px-6 py-4 mx-auto'>
@@ -90,7 +91,7 @@ const Navbar = () => {
                 >
                   <ImCart className='text-2xl' />
                   {cart.length ? (
-                    <div className='rounded-full bg-green-400 absolute top-3 left-3 size-5'>
+                    <div className='rounded-full bg-blue-400 text-white text-xs absolute top-3 flex justify-center items-center left-3 size-5'>
                       {/* total cart items */}
                       {
                         cart.reduce((acc, curr) => {
