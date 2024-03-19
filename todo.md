@@ -8,4 +8,4 @@
 
 # fix the cart quantity showing after adding to cart
 
-# dont let users in dashboard
+# confirm modal for deletion

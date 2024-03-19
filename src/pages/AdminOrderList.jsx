@@ -10,7 +10,7 @@ const AdminOrderList = () => {
   if (isLoading) {
     content = (
       <tr>
-        <td>
+        <td className='min-h-[80vh] flex justify-center items-center'>
           <AiOutlineLoading3Quarters className='animate-spin' />
         </td>
       </tr>
@@ -45,7 +45,7 @@ const AdminOrderList = () => {
           </p>
         </td>
         <td className='px-6 py-4 whitespace-nowrap text-black'>
-          <button className='btn btn-primary mr-2'>View Details</button>
+          <button className='btn btn-info mr-2'>View Details</button>
           <button className='btn btn-danger'>Delete</button>
         </td>
       </tr>
