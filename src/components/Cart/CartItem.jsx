@@ -1,8 +1,12 @@
+import { FloatButton } from 'antd'
 import { AnimatePresence, motion } from 'framer-motion'
-import { AiFillDollarCircle } from 'react-icons/ai'
+import {
+  AiFillCheckCircle,
+  AiFillDelete,
+  AiFillDollarCircle,
+} from 'react-icons/ai'
 import ProductImg from '../../assets/product.jpeg'
 import useCartContext from '../../hooks/useCartContext.js'
-import { DeleteSVG } from '../ui/SVG.jsx'
 
 const CartItem = ({ selectedCustomer }) => {
   const { setCart, cart } = useCartContext()
@@ -41,20 +45,28 @@ const CartItem = ({ selectedCustomer }) => {
                 <img
                   src={ProductImg}
                   alt='product'
-                  className='max-lg:w-full lg:w-[180px] '
+                  className='max-lg:w-full lg:w-[180px] rounded-full'
                 />
               </div>
-              <div className='col-span-12 lg:col-span-10 detail w-full lg:pl-3'>
+              <div className='col-span-12 lg:col-span-10 relative detail w-full lg:pl-3'>
                 <div className='flex items-center justify-between w-full mb-4'>
                   <h5 className='font-manrope font-bold text-2xl leading-9 text-gray-900'>
                     {item.productName}
                   </h5>
-                  <button
-                    onClick={() => handleDeleteCartItem(item.productId)}
-                    className='rounded-full group flex items-center justify-center focus-within:outline-red-500'
-                  >
-                    <DeleteSVG />
-                  </button>
+                  <div className='rounded-full group flex items-center justify-center focus-within:outline-red-500'>
+                    <FloatButton.Group
+                      trigger='click'
+                      type='primary'
+                      style={{ bottom: 24, position: 'absolute' }}
+                      icon={<AiFillDelete />}
+                    >
+                      <FloatButton
+                        icon={<AiFillCheckCircle />}
+                        className='bg-red-500'
+                        onClick={() => handleDeleteCartItem(item.productId)}
+                      />
+                    </FloatButton.Group>
+                  </div>
                 </div>
                 <div className='font-normal flex items-center gap-2 text-base leading-7 text-gray-100 mb-6'>
                   <AiFillDollarCircle />

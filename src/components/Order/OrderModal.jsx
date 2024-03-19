@@ -31,7 +31,7 @@ const OrderModal = ({ isModalOpen, setIsModalOpen, children, order }) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <div className='card w-fit font-poppins m-auto'>
+        <div className='card w-fit font-poppins m-auto flex flex-col items-center'>
           <figure>
             <img className='size-60' src={Avatar} alt='Shoes' />
           </figure>
@@ -40,7 +40,7 @@ const OrderModal = ({ isModalOpen, setIsModalOpen, children, order }) => {
             <p className={`${setOrderStatsBg(order)} w-fit p-1 text-white`}>
               Status: {status}
             </p>
-            <p className='text-blue-500'>Amount: ${totalAmount}</p>
+            <p className='text-blue-500 text-xl'>Amount: ${totalAmount}</p>
           </div>
         </div>
       </Modal>

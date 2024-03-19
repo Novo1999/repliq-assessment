@@ -33,10 +33,10 @@ const CustomerModal = ({ isModalOpen, setIsModalOpen, children, customer }) => {
           <div>
             <img className='size-fit' src={Avatar} alt='avatar' />
           </div>
-          <div>
+          <div className='font-poppins'>
             <div className='text-lg font-bold mb-4'>{name}</div>
-            <div className='text-gray-600 mb-2'>{email}</div>
-            <div className='text-gray-600'>{address}</div>
+            <div className='text-blue-500 mb-2'>{email}</div>
+            <div className='text-green-600'>{address}</div>
           </div>
         </div>
       </Modal>

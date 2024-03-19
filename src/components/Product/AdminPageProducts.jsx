@@ -1,15 +1,24 @@
-import { Card, Col, Row } from 'antd'
+import { Card, Col, FloatButton, Row } from 'antd'
 import { AnimatePresence, motion } from 'framer-motion'
-import { AiFillDollarCircle } from 'react-icons/ai'
+import {
+  AiFillCheckCircle,
+  AiFillDelete,
+  AiFillDollarCircle,
+} from 'react-icons/ai'
 import ProductImg from '../../assets/product.jpeg'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver.js'
 import useProductContext from '../../hooks/useProductContext.js'
 import Loader from '../ui/Loader.jsx'
-import { DeleteSVG } from '../ui/SVG.jsx'
 
 const AdminPageProducts = ({ data }) => {
   const { limit, hasMore, loaderRef } = useIntersectionObserver(data)
   const { setProducts, products } = useProductContext()
+
+  const handleDelete = (id) => {
+    setProducts((prevProducts) =>
+      prevProducts.filter((product) => product.id !== id)
+    )
+  }
 
   return (
     <div className='flex flex-col gap-4'>
@@ -34,19 +43,24 @@ const AdminPageProducts = ({ data }) => {
                     title={
                       <div className='flex justify-between'>
                         <p>{name}</p>
-                        <motion.div
-                          whileTap={{ scale: 0.9 }}
-                          className='cursor-pointer'
-                          onClick={() =>
-                            setProducts((prevProducts) =>
-                              prevProducts.filter(
-                                (product) => product.id !== id
-                              )
-                            )
-                          }
-                        >
-                          <DeleteSVG />
-                        </motion.div>
+                        <div>
+                          <FloatButton.Group
+                            trigger='click'
+                            type='primary'
+                            style={{
+                              position: 'absolute',
+                              top: 10,
+                              right: 10,
+                            }}
+                            icon={<AiFillDelete />}
+                          >
+                            <FloatButton
+                              icon={<AiFillCheckCircle />}
+                              className='bg-red-500'
+                              onClick={() => handleDelete(id)}
+                            />
+                          </FloatButton.Group>
+                        </div>
                       </div>
                     }
                     className='w-96 bg-teal-500 text-white'
