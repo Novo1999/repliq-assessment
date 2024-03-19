@@ -49,6 +49,7 @@ const AdminPageProducts = ({ data }) => {
                             type='primary'
                             style={{
                               position: 'absolute',
+                              zIndex: 0,
                               top: 10,
                               right: 10,
                             }}
