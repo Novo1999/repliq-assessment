@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ImCart } from 'react-icons/im'
 import { Link } from 'react-router-dom'
+import useAuthContext from '../../hooks/useAuthContext.js'
 import useCartContext from '../../hooks/useCartContext.js'
 import CartDrawer from '../Cart/CartDrawer.jsx'
 import Navlink from './Navlink.jsx'
@@ -13,7 +14,7 @@ const Navbar = () => {
   }
 
   const { cart } = useCartContext()
-
+  const { user: { accessToken } = {} } = useAuthContext()
   return (
     <nav className='fixed z-[99] w-full top-0 bg-white shadow-lg font-poppins'>
       <div className='container px-6 py-4 mx-auto'>
@@ -73,32 +74,36 @@ const Navbar = () => {
                 : 'opacity-0 -translate-x-full'
             }`}
           >
-            <div className='flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8'>
-              <Navlink to='/'>Home</Navlink>
-              <Navlink to='/dashboard'>Dashboard</Navlink>
-              <Navlink to='/orders'>Orders</Navlink>
-              <Navlink to='/add-new'>Add New Product</Navlink>
-            </div>
-            <div className='items-center mt-4 lg:mt-0 hidden lg:flex'>
-              <CartDrawer>
-                <div
-                  className='hidden mx-4 text-gray-600 transition-colors duration-300 transform lg:block  hover:text-gray-700 focus:text-gray-700 focus:outline-none'
-                  aria-label='show notifications'
-                >
-                  <ImCart className='text-2xl' />
-                  {cart.length ? (
-                    <div className='rounded-full bg-green-400 absolute top-3 left-3 size-5'>
-                      {/* total cart items */}
-                      {
-                        cart.reduce((acc, curr) => {
-                          return [...acc, ...curr.items]
-                        }, []).length
-                      }
-                    </div>
-                  ) : null}
-                </div>
-              </CartDrawer>
-            </div>
+            {accessToken ? (
+              <div className='flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8'>
+                <Navlink to='/'>Home</Navlink>
+                <Navlink to='/dashboard'>Dashboard</Navlink>
+                <Navlink to='/orders'>Orders</Navlink>
+                <Navlink to='/add-new'>Add New Product</Navlink>
+              </div>
+            ) : null}
+            {accessToken ? (
+              <div className='items-center mt-4 lg:mt-0 hidden lg:flex'>
+                <CartDrawer>
+                  <div
+                    className='hidden mx-4 text-gray-600 transition-colors duration-300 transform lg:block  hover:text-gray-700 focus:text-gray-700 focus:outline-none'
+                    aria-label='show notifications'
+                  >
+                    <ImCart className='text-2xl' />
+                    {cart.length ? (
+                      <div className='rounded-full bg-green-400 absolute top-3 left-3 size-5'>
+                        {/* total cart items */}
+                        {
+                          cart.reduce((acc, curr) => {
+                            return [...acc, ...curr.items]
+                          }, []).length
+                        }
+                      </div>
+                    ) : null}
+                  </div>
+                </CartDrawer>
+              </div>
+            ) : null}
             <CartDrawer>
               <div
                 className='block text-gray-600 transition-colors duration-300 transform lg:hidden hover:text-gray-700 relative right-4 focus:text-gray-700 focus:outline-none'

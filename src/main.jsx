@@ -10,6 +10,8 @@ import AdminDashBoard from './pages/AdminDashBoard.jsx'
 import AdminOrderList from './pages/AdminOrderList.jsx'
 import Checkout from './pages/Checkout.jsx'
 import Home from './pages/Home.jsx'
+import Login from './pages/Login.jsx'
+import Register from './pages/Register.jsx'
 
 const queryClient = new QueryClient()
 
@@ -20,9 +22,16 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
     children: [
       {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
+      },
+      {
         path: '/',
         element: <Home />,
-        index: true,
       },
       {
         path: 'dashboard',

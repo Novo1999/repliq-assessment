@@ -6,9 +6,10 @@ const AuthProvider = ({ children }) => {
     username: '',
     accessToken: '',
   })
+  const [users, setUsers] = useState([])
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, users, setUsers }}>
       {children}
     </AuthContext.Provider>
   )
