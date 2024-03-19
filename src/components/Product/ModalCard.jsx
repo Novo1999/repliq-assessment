@@ -6,7 +6,7 @@ const ModalCard = ({ product }) => {
   const { id, category, description, name, price, rating } = product
   const hasQuantity = productQuantity.find((item) => item.id === id)
   return (
-    <div className='flex w-full flex-col md:flex-row overflow-hidden bg-white rounded-lg h-fit font-poppins'>
+    <div className='flex w-full flex-col md:flex-row overflow-hidden rounded-lg h-fit font-poppins'>
       <div className='w-fit sm:w-48'>
         <img src={ProductImg} alt='product' />
       </div>

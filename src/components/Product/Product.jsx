@@ -13,7 +13,7 @@ const Product = ({ product }) => {
   return (
     <motion.div whileHover={{ translateY: -5 }}>
       <Card
-        className='w-72 xl:w-[400px] font-poppins cursor-pointer h-full'
+        className='w-72 xl:w-[400px] font-poppins cursor-pointer h-full bg-blue-500 border-none'
         cover={
           <ProductModal
             isModalOpen={isModalOpen}
@@ -30,7 +30,10 @@ const Product = ({ product }) => {
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
         >
-          <Meta title={name} description={description} />
+          <Meta
+            title={<p className='text-white'>{name}</p>}
+            description={<p className='text-white'>{description}</p>}
+          />
           <div className='flex justify-between mt-6'>
             <p className='text-xl text-blue-500'>Price: ${price}</p>
             <div

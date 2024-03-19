@@ -22,14 +22,15 @@ const ProductForm = ({ products }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='w-96 space-y-2 bg-white p-10 h-fit mt-48 rounded-lg shadow-xl re'
+      className='w-96 space-y-2 bg-white p-10 h-fit mt-48 rounded-lg shadow-xl'
     >
       <p className='text-center text-2xl text-black'>Add New Product</p>
       <label htmlFor='Product Image' className='block text-center'>
         Product Image
       </label>
-
-      <FileUpload />
+      <div className='flex justify-center'>
+        <FileUpload />
+      </div>
       <label htmlFor='Name'>Name</label>
       <input
         className='mb-4 w-full p-2 border rounded-md bg-white focus:ring outline-none text-black'

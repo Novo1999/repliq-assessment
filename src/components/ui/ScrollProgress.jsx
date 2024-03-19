@@ -29,7 +29,7 @@ const ScrollProgress = () => {
       style={{ width: `${scrollTop}%` }}
       className='bg-black h-[5px] sticky top-0 left-0 z-[100] w-[100%]'
     >
-      <div className='h-[5px] bg-green-500 w-[100%]'></div>
+      <div className='h-[5px] bg-blue-500 w-[100%]'></div>
     </div>
   )
 }
