@@ -21,7 +21,7 @@ const AdminDashboard = () => {
     productLength = <p className='text-red-400'>Error Getting Total Products</p>
   }
 
-  if (!isLoading && !isError && data.length === 0) {
+  if (!isLoading && !isError && data?.length === 0) {
     productLength = <p className='text-blue-400'>No Products</p>
   }
 

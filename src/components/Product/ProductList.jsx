@@ -24,7 +24,7 @@ const ProductList = () => {
     content = <Error error={error} message='Could not get products' />
   }
 
-  if (!isLoading && !isError && data.length === 0) {
+  if (!isLoading && !isError && data?.length === 0) {
     content = <EmptyResponse message='No products found' />
   }
 

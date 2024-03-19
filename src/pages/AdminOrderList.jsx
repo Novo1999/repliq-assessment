@@ -1,4 +1,5 @@
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import OrderContent from '../components/Order/OrderContent.jsx'
 import useGetOrders from '../hooks/api/useGetOrders.js'
 import { setOrderStatsBg } from '../utils/setOrderStatusBg.js'
 
@@ -44,10 +45,7 @@ const AdminOrderList = () => {
             {order.status}
           </p>
         </td>
-        <td className='px-6 py-4 whitespace-nowrap text-black'>
-          <button className='btn btn-info mr-2'>View Details</button>
-          <button className='btn btn-danger'>Delete</button>
-        </td>
+        <OrderContent order={order} />
       </tr>
     ))
   }

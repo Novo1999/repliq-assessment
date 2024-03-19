@@ -28,13 +28,13 @@ const Customers = () => {
     customers = <p className='text-red-400'>Error Getting customers</p>
   }
 
-  if (!customerLoading && !customerError && customerData.length === 0) {
+  if (!customerLoading && !customerError && customerData?.length === 0) {
     customers = (
       <Error error={customerError} message='Could not get customers list' />
     )
   }
 
-  if (!customerLoading && !customerError && customerData.length > 0) {
+  if (!customerLoading && !customerError && customerData?.length > 0) {
     customers = customerData.map((customer) => {
       return (
         <tr key={customer.id}>

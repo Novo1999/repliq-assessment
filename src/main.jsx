@@ -3,6 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
+import NotFoundPage from './components/misc/NotFoundPage.jsx'
 import './index.css'
 import AdminDashBoard from './pages/AdminDashBoard.jsx'
 import AdminOrderList from './pages/AdminOrderList.jsx'
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: '/',

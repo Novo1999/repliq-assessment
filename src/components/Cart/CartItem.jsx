@@ -1,12 +1,15 @@
-import { toast } from 'react-toastify'
 import ProductImg from '../../assets/product.jpeg'
 
 import useCartContext from '../../hooks/useCartContext.js'
 import { DeleteSVG } from '../ui/SVG.jsx'
 
-const CartItem = ({ cart }) => {
-  const { setCart } = useCartContext()
+const CartItem = ({ selectedCustomer }) => {
+  const { setCart, cart } = useCartContext()
 
+  const selectedCustomerItems = cart.find((item) => {
+    return item.userId === selectedCustomer.userId && item.items
+  })
+  // this deletes the cart item
   const handleDeleteCartItem = (productIdToRemove) => {
     setCart((prevCart) =>
       prevCart.map((user) => ({
@@ -16,15 +19,10 @@ const CartItem = ({ cart }) => {
         ),
       }))
     )
-
-    toast.info('Deleted from cart', {
-      autoClose: 1000,
-      position: 'bottom-right',
-    })
   }
 
-  return cart.length ? (
-    cart.map((item) => {
+  return selectedCustomerItems.items.length ? (
+    selectedCustomerItems.items.map((item) => {
       return (
         <div key={item.productId}>
           <div className='rounded-3xl border-2 border-gray-200 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 '>

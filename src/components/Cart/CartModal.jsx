@@ -1,6 +1,5 @@
 import { Modal } from 'antd'
 import Avatar from '../../assets/avatar.png'
-import useCartContext from '../../hooks/useCartContext.js'
 import CartItem from './CartItem.jsx'
 
 const CartModal = ({
@@ -49,7 +48,7 @@ const CartModal = ({
         <div>
           <CartItem
             key={selectedCustomer?.userId}
-            cart={selectedCustomer?.items}
+            selectedCustomer={selectedCustomer}
           />
         </div>
       </Modal>

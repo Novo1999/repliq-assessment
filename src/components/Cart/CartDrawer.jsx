@@ -37,16 +37,6 @@ const CartDrawer = ({ children }) => {
             })}
           </div>
         </section>
-        <div className='w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto'>
-          {/* {cart.map((item) => {
-            return (
-              item.quantity !== 0 &&
-              item.userId === selectedCustomer && (
-                <CartItem key={item.userId} cart={item} />
-              )
-            )
-          })} */}
-        </div>
       </Drawer>
     </>
   )
