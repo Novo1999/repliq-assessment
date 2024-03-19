@@ -40,7 +40,9 @@ const Customers = () => {
         <tr key={customer.id}>
           <td className='px-6 py-4 whitespace-nowrap text-blue-500 cursor-pointer'>
             <span onClick={() => setSelectedCustomerId(customer.id)}>
-              {customer.name}
+              <div className='tooltip tooltip-info' data-tip='View Details'>
+                {customer.name}
+              </div>
             </span>
             {selectedCustomerId === customer.id && (
               <CustomerModal

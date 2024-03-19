@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import ProductSummary from '../components/ProductSummary.jsx'
 import useCartContext from '../hooks/useCartContext.js'
-import { calculateCartTotal } from '../utils/calculateCartTotal.js'
+// import { calculateCartTotal } from '../utils/calculateCartTotal.js'
 
 const Checkout = () => {
   const { cart, setCart } = useCartContext()
@@ -110,7 +110,7 @@ const Checkout = () => {
             {/* Total */}
             <div className='flex justify-between items-center border-t pt-2'>
               <p className='font-semibold'>Total:</p>
-              <p className='font-semibold'>${calculateCartTotal(cart)}</p>
+              {/* <p className='font-semibold'>${calculateCartTotal(cart)}</p> */}
             </div>
           </div>
           {/* Checkout Button */}

@@ -76,8 +76,7 @@ const Navbar = () => {
             <div className='flex flex-col -mx-6 lg:flex-row lg:items-center lg:mx-8'>
               <Navlink to='/dashboard'>Dashboard</Navlink>
               <Navlink to='/orders'>Orders</Navlink>
-              <Navlink to='/products'>Products</Navlink>
-              <Navlink to='/'>xx</Navlink>
+              <Navlink to='/add-new'>Add New Product</Navlink>
             </div>
             <div className='items-center mt-4 lg:mt-0 hidden lg:flex'>
               <CartDrawer>
