@@ -1,4 +1,3 @@
-import { Input } from 'antd'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import useGetProducts from '../../hooks/api/useGetProducts.js'
@@ -8,21 +7,15 @@ import EmptyResponse from '../misc/EmptyResponse.jsx'
 import Error from '../misc/Error.jsx'
 import ProductSkeleton from '../misc/ProductSkeleton.jsx'
 import Loader from '../ui/Loader.jsx'
+import Search from '../ui/Search.jsx'
 import FilterProducts from './FilterProducts.jsx'
 import Product from './Product.jsx'
-
-const { Search } = Input
-
-const onSearch = (value) => {
-  console.log(value)
-}
 
 const ProductList = () => {
   const { data: { data } = {}, isLoading, isError, error } = useGetProducts()
   const { loaderRef, limit, hasMore } = useIntersectionObserver(data)
   const { setProducts, products } = useProductContext()
   const [isOpen, setIsOpen] = useState(false)
-
   // set product context on load
   useEffect(() => {
     if (!isLoading && !isError && data?.length > 0) {
@@ -64,12 +57,9 @@ const ProductList = () => {
     content = (
       <>
         <div className='flex justify-between mx-10 flex-col items-center sm:items-start sm:flex-row'>
-          <Search
-            className='w-fit bg-blue-500 rounded-md mt-2'
-            placeholder='input search text'
-            onSearch={onSearch}
-            enterButton
-          />
+          {/* search */}
+          <Search productsData={data} />
+          {/* filter */}
           <FilterProducts isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
 

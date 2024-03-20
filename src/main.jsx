@@ -8,7 +8,6 @@ import './index.css'
 import AddProduct from './pages/AddProduct.jsx'
 import AdminDashBoard from './pages/AdminDashBoard.jsx'
 import AdminOrderList from './pages/AdminOrderList.jsx'
-import Checkout from './pages/Checkout.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
@@ -36,10 +35,6 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <AdminDashBoard />,
-      },
-      {
-        path: 'checkout',
-        element: <Checkout />,
       },
       {
         path: 'orders',

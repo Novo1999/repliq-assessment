@@ -34,13 +34,13 @@ const CartItem = ({ selectedCustomer }) => {
             layout
             initial={{ x: 300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -300, opacity: 0 }}
+            exit={{ y: -300, opacity: 0 }}
             whileInView={{ opacity: 1 }}
             whileHover={{ scale: 1.01 }}
             transition={{ type: 'tween', duration: 0.2 }}
             key={item.productId}
           >
-            <div className='rounded-3xl border-2 border-gray-200 bg-blue-500 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 '>
+            <div className='rounded-3xl border-2 border-gray-200 bg-blue-500 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4'>
               <div className='col-span-12 lg:col-span-2 img box'>
                 <img
                   src={ProductImg}
@@ -56,7 +56,7 @@ const CartItem = ({ selectedCustomer }) => {
                   <div className='rounded-full group flex items-center justify-center focus-within:outline-red-500'>
                     <FloatButton.Group
                       trigger='click'
-                      type='primary'
+                      type='default'
                       style={{ bottom: 24, position: 'absolute' }}
                       icon={<AiFillDelete />}
                     >
