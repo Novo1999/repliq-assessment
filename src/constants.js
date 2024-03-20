@@ -1,6 +1,5 @@
-// for email validation in register and log in
-export const EMAIL_REGEX =
-  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+// this validates if the number is bangladeshi or not
+export const PHONE_NUMBER_REGEX = /(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/
 
 export const PRODUCT_URL = 'https://novo1999.github.io/repliq-json/repliq.json'
 export const ORDERS_URL = 'https://novo1999.github.io/repliq-json/orders.json'

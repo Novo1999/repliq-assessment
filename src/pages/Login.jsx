@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import { EMAIL_REGEX } from '../constants.js'
+import { PHONE_NUMBER_REGEX } from '../constants.js'
 import useAuthContext from '../hooks/useAuthContext.js'
 
 const Login = () => {
@@ -13,10 +13,10 @@ const Login = () => {
   } = useForm()
   const { setUser, users } = useAuthContext()
   const handleLogin = (data) => {
-    const { username, email } = data
+    const { username, phoneNumber } = data
 
-    // check if email exists
-    if (users.find((user) => user.email === email)) {
+    // check if phoneNumber exists
+    if (users.find((user) => user.phoneNumber === phoneNumber)) {
       setUser({ username, accessToken: crypto.randomUUID() }) // setting user on register
       navigate('/')
     } else {
@@ -40,18 +40,18 @@ const Login = () => {
         <div className='mb-4'>
           <input
             className='w-full p-2 border border-gray-300 rounded-md bg-white'
-            type='email'
-            placeholder='Email'
-            {...register('email', {
-              required: 'Email is required',
-              // email validation
+            type='number'
+            placeholder='Phone Number'
+            {...register('phoneNumber', {
+              required: 'Phone number is required',
+              // phoneNumber validation
               pattern: {
-                value: EMAIL_REGEX,
-                message: 'Invalid Email',
+                value: PHONE_NUMBER_REGEX,
+                message: 'Invalid phone number',
               },
             })}
           />
-          <p className='text-red-500'>{errors.email?.message}</p>
+          <p className='text-red-500'>{errors.phoneNumber?.message}</p>
         </div>
         <div className='mb-4'>
           <input

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import { EMAIL_REGEX } from '../constants.js'
+import { PHONE_NUMBER_REGEX } from '../constants.js'
 import useAuthContext from '../hooks/useAuthContext.js'
 
 const Register = () => {
@@ -14,15 +14,15 @@ const Register = () => {
   const navigate = useNavigate()
 
   const handleRegister = (data) => {
-    const { username, email } = data
-    // check if email already exists
-    if (users.find((user) => user.email === email)) {
+    const { username, phoneNumber } = data
+    // check if phoneNumber already exists
+    if (users.find((user) => user.phoneNumber === phoneNumber)) {
       setError('root.registerError', {
         type: 'register',
         message: `An user with name ${username} already exists`,
       })
     } else {
-      setUsers((prevUsers) => [...prevUsers, { email, username }]) // adding new user to the users array
+      setUsers((prevUsers) => [...prevUsers, { phoneNumber, username }]) // adding new user to the users array
       setUser({ username, accessToken: crypto.randomUUID() }) // setting user on register
       navigate('/')
     }
@@ -51,18 +51,18 @@ const Register = () => {
         <div className='mb-4'>
           <input
             className='w-full p-2 border border-gray-300 rounded-md bg-white'
-            type='email'
-            placeholder='Email'
-            {...register('email', {
-              required: 'Email is required',
-              // email validation
+            type='number'
+            placeholder='Phone Number'
+            {...register('phoneNumber', {
+              required: 'Phone number is required',
+              // phoneNumber validation
               pattern: {
-                value: EMAIL_REGEX,
-                message: 'Invalid Email',
+                value: PHONE_NUMBER_REGEX,
+                message: 'Invalid phone number',
               },
             })}
           />
-          <p className='text-red-500'>{errors.email?.message}</p>
+          <p className='text-red-500'>{errors.phoneNumber?.message}</p>
         </div>
         <div className='mb-4'>
           <input
