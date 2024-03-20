@@ -83,7 +83,7 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
       >
         <div />
         <motion.button
-          className='bg-white rounded-lg flex justify-between h-10 p-3'
+          className='bg-blue-500 text-black font-bold rounded-lg flex justify-between h-10 p-3'
           whileTap={{ scale: 0.97 }}
         >
           {category || 'Filter By'}
@@ -95,7 +95,7 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
         </motion.button>
         <ul
           ref={menuRef}
-          className='mt-3 flex flex-col gap-[1px] w-60'
+          className='mt-3 flex flex-col gap-[1px] w-60 border rounded-lg shadow-md'
           style={{
             pointerEvents: isOpen ? 'auto' : 'none',
             clipPath: 'inset(10% 50% 90% 50% round 10px)',

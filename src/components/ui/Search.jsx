@@ -22,7 +22,7 @@ const Search = ({ productsData }) => {
   }, 300)
 
   return (
-    <label className='input input-info input-bordered flex items-center bg-white gap-2'>
+    <label className='input input-info input-bordered flex items-center text-white gap-2'>
       <input
         value={inputValue}
         type='text'

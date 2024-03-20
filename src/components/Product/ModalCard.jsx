@@ -1,14 +1,13 @@
-import ProductImg from '../../assets/product.jpeg'
 import useQuantity from '../../hooks/useQuantity.js'
 
 const ModalCard = ({ product }) => {
   const { productQuantity } = useQuantity()
-  const { id, category, description, name, price, rating } = product
+  const { id, category, description, name, price, rating, imageURL } = product
   const hasQuantity = productQuantity.find((item) => item.id === id)
   return (
     <div className='flex w-full flex-col md:flex-row overflow-hidden rounded-lg h-fit font-poppins'>
       <div className='w-fit sm:w-48'>
-        <img src={ProductImg} alt='product' />
+        <img src={imageURL} alt='product' />
       </div>
       <div className='p-4 md:p-4'>
         <h1 className='text-xl font-bold text-gray-800'>{name}</h1>

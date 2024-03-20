@@ -9,11 +9,10 @@ import ProductModal from './ProductModal.jsx'
 const { Meta } = Card
 
 const Product = ({ product }) => {
-  const { category, description, name, price } = product
+  const { category, description, name, price, imageURL } = product
   const { data: { data } = {} } = useGetProducts()
   const { setIsFiltering, setCategory } = useCategoryContext()
   const { setProducts } = useProductContext()
-
   const handleChangeCategory = (category) => {
     if (category) {
       setCategory(category)
@@ -30,14 +29,18 @@ const Product = ({ product }) => {
   return (
     <motion.div whileHover={{ translateY: -5 }}>
       <Card
-        className='w-72 xl:w-[400px] font-poppins cursor-pointer h-full bg-blue-500 border-none'
+        className='w-72 shadow-xl min-h-96 xl:w-[400px] font-poppins cursor-pointer h-full bg-blue-500 border-none'
         cover={
           <ProductModal
             isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}
             product={product}
           >
-            <img alt='example' src={ProductImg} />
+            <img
+              className='min-h-full object-cover w-full'
+              alt='example'
+              src={imageURL}
+            />
           </ProductModal>
         }
       >
@@ -52,7 +55,7 @@ const Product = ({ product }) => {
             description={<p className='text-white'>{description}</p>}
           />
           <div className='flex justify-between mt-6'>
-            <p className='text-xl text-blue-500'>Price: ${price}</p>
+            <p className='text-xl text-white'>Price: ${price}</p>
             <div
               onClick={(e) => {
                 e.stopPropagation()
