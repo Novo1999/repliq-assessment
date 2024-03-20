@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import OrderContent from '../components/Order/OrderContent.jsx'
 import Loader from '../components/ui/Loader.jsx'
@@ -50,40 +51,48 @@ const AdminOrderList = () => {
     ))
   }
 
-  return isLoading ? (
-    <div className='bg-white *:text-7xl flex justify-center items-center min-h-screen'>
-      <Loader />
-    </div>
-  ) : (
-    <div className='container mx-auto px-4 py-8 font-poppins'>
-      <h1 className='text-3xl font-semibold mb-4'>Admin Order List</h1>
-      {data?.length === 0 ? (
-        <p className='text-gray-600'>No orders available</p>
+  return (
+    <motion.div
+      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 1 } }}
+    >
+      {isLoading ? (
+        <div className='bg-white *:text-7xl flex justify-center items-center min-h-screen'>
+          <Loader />
+        </div>
       ) : (
-        <table className='min-w-full divide-y divide-gray-200'>
-          <thead className='bg-gray-50'>
-            <tr>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                Order ID
-              </th>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                Customer Name
-              </th>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                Total Amount
-              </th>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                Status
-              </th>
-              <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody className='bg-white divide-y divide-gray-200'>{content}</tbody>
-        </table>
+        <div className='container mx-auto px-4 py-8 font-poppins'>
+          <h1 className='text-3xl font-semibold mb-4'>Admin Order List</h1>
+          {data?.length === 0 ? (
+            <p className='text-gray-600'>No orders available</p>
+          ) : (
+            <table className='min-w-full divide-y divide-gray-200'>
+              <thead className='bg-gray-50'>
+                <tr>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                    Order ID
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                    Customer Name
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                    Total Amount
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                    Status
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody className='bg-white divide-y divide-gray-200'>
+                {content}
+              </tbody>
+            </table>
+          )}
+        </div>
       )}
-    </div>
+    </motion.div>
   )
 }
 

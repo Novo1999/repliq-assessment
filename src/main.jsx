@@ -5,13 +5,12 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import NotFoundPage from './components/misc/NotFoundPage.jsx'
 import './index.css'
-import AddProduct from './pages/AddProduct.jsx'
 import AdminDashBoard from './pages/AdminDashBoard.jsx'
 import AdminOrderList from './pages/AdminOrderList.jsx'
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
+import Products from './pages/Products.jsx'
 import Register from './pages/Register.jsx'
-
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -42,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'products',
-        element: <AddProduct />,
+        element: <Products />,
       },
     ],
   },

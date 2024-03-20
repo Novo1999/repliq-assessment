@@ -5,7 +5,6 @@ import {
   AiFillDelete,
   AiFillDollarCircle,
 } from 'react-icons/ai'
-import ProductImg from '../../assets/product.jpeg'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver.js'
 import useProductContext from '../../hooks/useProductContext.js'
 import Loader from '../ui/Loader.jsx'
@@ -21,7 +20,10 @@ const AdminPageProducts = ({ data }) => {
   }
 
   return (
-    <div className='flex flex-col gap-4'>
+    <motion.div
+      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 1 } }}
+      className='flex flex-col gap-4'
+    >
       <p>{products.length} Products</p>
       <AnimatePresence>
         {data
@@ -111,7 +113,7 @@ const AdminPageProducts = ({ data }) => {
           <hr className='w-60 m-auto' />
         </>
       )}
-    </div>
+    </motion.div>
   )
 }
 export default AdminPageProducts

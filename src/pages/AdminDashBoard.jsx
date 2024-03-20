@@ -32,7 +32,10 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className='min-h-screen bg-gray-100 font-poppins'>
+    <motion.div
+      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 1 } }}
+      className='min-h-screen bg-gray-100 font-poppins'
+    >
       {/* Header */}
       <header className='bg-white shadow-sm'>
         <div className='max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center'>
@@ -130,7 +133,7 @@ const AdminDashboard = () => {
           </div>
         </div>
       </main>
-    </div>
+    </motion.div>
   )
 }
 

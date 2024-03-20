@@ -6,7 +6,7 @@ import ProductForm from '../components/ui/ProductForm.jsx'
 import useGetProducts from '../hooks/api/useGetProducts.js'
 import useProductContext from '../hooks/useProductContext.js'
 
-const AddProduct = () => {
+const Products = () => {
   const { isLoading, isError, error, data: { data } = {} } = useGetProducts()
   const { products, setProducts } = useProductContext()
 
@@ -41,4 +41,4 @@ const AddProduct = () => {
     </main>
   )
 }
-export default AddProduct
+export default Products

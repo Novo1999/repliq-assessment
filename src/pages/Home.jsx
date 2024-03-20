@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import ProductContainer from '../components/Product/ProductContainer.jsx'
@@ -15,12 +16,14 @@ const Home = () => {
   })
 
   return (
-    <>
+    <motion.div
+      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 1 } }}
+    >
       <Carousel />
       <ProductContainer>
         <ProductList />
       </ProductContainer>
-    </>
+    </motion.div>
   )
 }
 export default Home
