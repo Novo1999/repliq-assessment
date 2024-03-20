@@ -33,7 +33,7 @@ const AdminDashboard = () => {
 
   return (
     <motion.div
-      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 1 } }}
+      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 0.5 } }}
       className='min-h-screen bg-gray-100 font-poppins'
     >
       {/* Header */}

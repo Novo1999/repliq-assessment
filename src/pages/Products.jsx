@@ -36,8 +36,8 @@ const Products = () => {
 
   return (
     <main className='flex bg-white min-h-screen flex-col items-center lg:items-start pb-20 lg:flex-row font-poppins justify-evenly p-10'>
-      <div className='mt-32'>{content}</div>
       <ProductForm products={products} />
+      <div className='mt-32'>{content}</div>
     </main>
   )
 }

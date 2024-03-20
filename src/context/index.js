@@ -5,6 +5,7 @@ const AuthContext = createContext(null)
 const ProductContext = createContext(null)
 const CategoryContext = createContext(null)
 const CustomerContext = createContext(null)
+const ThemeContext = createContext(null)
 
 export {
   AuthContext,
@@ -12,4 +13,5 @@ export {
   CategoryContext,
   CustomerContext,
   ProductContext,
+  ThemeContext,
 }

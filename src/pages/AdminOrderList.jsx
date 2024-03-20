@@ -53,7 +53,7 @@ const AdminOrderList = () => {
 
   return (
     <motion.div
-      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 1 } }}
+      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 0.5 } }}
     >
       {isLoading ? (
         <div className='bg-white *:text-7xl flex justify-center items-center min-h-screen'>

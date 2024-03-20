@@ -10,24 +10,27 @@ import CartProvider from './providers/CartProviders.jsx'
 import CategoryProvider from './providers/CategoryProvider.jsx'
 import CustomerProvider from './providers/CustomerContext.jsx'
 import ProductProvider from './providers/ProductProvider.jsx'
+import ThemeProvider from './providers/ThemeProvider.jsx'
 
 function App() {
   return (
-    <AuthProvider>
-      <CategoryProvider>
-        <CustomerProvider>
-          <ProductProvider>
-            <CartProvider>
-              <ScrollToTop />
-              <ScrollProgress />
-              <Navbar />
-              <AnimatedOutletFinal />
-            </CartProvider>
-          </ProductProvider>
-        </CustomerProvider>
-      </CategoryProvider>
-      <ToastContainer />
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <CategoryProvider>
+          <CustomerProvider>
+            <ProductProvider>
+              <CartProvider>
+                <ScrollToTop />
+                <ScrollProgress />
+                <Navbar />
+                <AnimatedOutletFinal />
+              </CartProvider>
+            </ProductProvider>
+          </CustomerProvider>
+        </CategoryProvider>
+        <ToastContainer />
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 

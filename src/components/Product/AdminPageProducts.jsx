@@ -21,7 +21,7 @@ const AdminPageProducts = ({ data }) => {
 
   return (
     <motion.div
-      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 1 } }}
+      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 0.5 } }}
       className='flex flex-col gap-4'
     >
       <p>{products.length} Products</p>
@@ -36,7 +36,7 @@ const AdminPageProducts = ({ data }) => {
                     layout
                     initial={{ x: 300, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: -300, opacity: 0 }}
+                    exit={{ x: 300, opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.01 }}
@@ -73,7 +73,7 @@ const AdminPageProducts = ({ data }) => {
                       <div className='flex gap-4 items-center'>
                         <img
                           src={imageURL}
-                          className='size-24 rounded-md'
+                          className='size-24 rounded-md object-cover'
                           alt='product-image'
                         />
                         <div>

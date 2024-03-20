@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import useAuthContext from '../../hooks/useAuthContext.js'
 import useCartContext from '../../hooks/useCartContext.js'
 import CartDrawer from '../Cart/CartDrawer.jsx'
+import DarkModeSwitch from './DarkModeSwitch.jsx'
 import Navlink from './Navlink.jsx'
 
 const Navbar = () => {
@@ -97,6 +98,7 @@ const Navbar = () => {
               <Navlink to='/dashboard'>Dashboard</Navlink>
               <Navlink to='/orders'>Orders</Navlink>
               <Navlink to='/products'>Products</Navlink>
+              <DarkModeSwitch />
             </div>
             <div className='items-center mt-4 lg:mt-0 hidden lg:flex'>
               <CartDrawer>
