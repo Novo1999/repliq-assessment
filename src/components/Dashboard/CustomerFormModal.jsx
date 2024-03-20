@@ -1,7 +1,10 @@
 import { Modal } from 'antd'
+import useThemeContext from '../../hooks/useThemeContext.js'
 import CustomerForm from './CustomerForm.jsx'
 
 const CustomerFormModal = ({ isModalOpen, setIsModalOpen, children }) => {
+  const { isLight } = useThemeContext()
+
   const showModal = () => {
     setIsModalOpen(true)
   }
@@ -28,8 +31,9 @@ const CustomerFormModal = ({ isModalOpen, setIsModalOpen, children }) => {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        className={`${!isLight ? 'custom-modal text-white' : ''}`}
       >
-        <div className='bg-white rounded-md p-6 flex flex-col sm:flex-row justify-center items-center gap-10 font-poppins'>
+        <div className='rounded-md p-6 flex flex-col sm:flex-row justify-center items-center gap-10 font-poppins'>
           <div>
             <div className='text-center text-xl'>
               <p>Add Customer details</p>

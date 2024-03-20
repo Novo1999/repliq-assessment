@@ -24,12 +24,13 @@ const CartDrawer = ({ children }) => {
         </Button>
       </Space>
       <Drawer
-        style={{ backgroundColor: isLight && '#292524' }}
+        style={{ backgroundColor: !isLight && '#292524' }}
         title={
-          <p className={`${isLight ? 'text-white' : 'text-black'}`}>
+          <p className={`${!isLight ? 'text-white' : 'text-black'}`}>
             User Carts
           </p>
         }
+        className={`${!isLight ? 'custom-drawer' : ''}`}
         placement='right'
         width={500}
         onClose={onClose}

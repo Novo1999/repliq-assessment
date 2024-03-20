@@ -14,3 +14,12 @@
 .custom-modal .ant-modal-close-x {
   color: white;
 }
+
+.custom-drawer .ant-drawer-close {
+  color: white;
+}
+
+.custom-drawer .ant-drawer-close:hover {
+  color: white;
+  background-color: gray;
+}

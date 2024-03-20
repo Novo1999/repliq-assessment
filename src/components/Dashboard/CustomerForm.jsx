@@ -1,9 +1,11 @@
 import { Button, Form, Input } from 'antd'
 import { toast } from 'react-toastify'
 import useCustomerContext from '../../hooks/useCustomer.js'
+import useThemeContext from '../../hooks/useThemeContext.js'
 const CustomerForm = ({ setIsModalOpen }) => {
   const { setCustomer } = useCustomerContext()
   const [form] = Form.useForm()
+  const { isLight } = useThemeContext()
 
   const onFinish = (values) => {
     setCustomer((prevCustomers) => [
@@ -43,7 +45,9 @@ const CustomerForm = ({ setIsModalOpen }) => {
     >
       <Form.Item
         className='sm:w-[400px]'
-        label='Name'
+        label={
+          <p className={`${isLight ? 'text-black' : 'text-white'}`}>Name</p>
+        }
         name='name'
         rules={[
           {
@@ -56,7 +60,9 @@ const CustomerForm = ({ setIsModalOpen }) => {
       </Form.Item>
 
       <Form.Item
-        label='Email'
+        label={
+          <p className={`${isLight ? 'text-black' : 'text-white'}`}>Email</p>
+        }
         name='email'
         rules={[
           {
@@ -68,7 +74,9 @@ const CustomerForm = ({ setIsModalOpen }) => {
         <Input />
       </Form.Item>
       <Form.Item
-        label='Address'
+        label={
+          <p className={`${isLight ? 'text-black' : 'text-white'}`}>Address</p>
+        }
         name='address'
         rules={[
           {
@@ -86,7 +94,11 @@ const CustomerForm = ({ setIsModalOpen }) => {
           span: 16,
         }}
       >
-        <Button type='default' htmlType='submit'>
+        <Button
+          className={`${isLight ? 'text-black' : 'text-white'}`}
+          type='default'
+          htmlType='submit'
+        >
           Submit
         </Button>
       </Form.Item>

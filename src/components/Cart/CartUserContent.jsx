@@ -2,10 +2,13 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import Avatar from '../../assets/avatar.png'
 import useGetCustomers from '../../hooks/api/useGetCustomers.js'
+import useThemeContext from '../../hooks/useThemeContext.js'
 import CartModal from './CartModal.jsx'
 
 const CartUserContent = ({ customer }) => {
   const [selectedCustomer, setSelectedCustomer] = useState()
+  const { isLight } = useThemeContext()
+
   const [isModalOpen, setIsModalOpen] = useState()
   const { data: { data: customerData } = {} } = useGetCustomers()
   const name = customerData?.find(
@@ -26,7 +29,9 @@ const CartUserContent = ({ customer }) => {
         setIsModalOpen={setIsModalOpen}
       >
         <img className='size-20' src={Avatar} alt='avatar' />
-        <p>{customerData?.find((item) => item.id === customer.userId).name}</p>
+        <p className={`${isLight ? 'text-black' : 'text-white'}`}>
+          {customerData?.find((item) => item.id === customer.userId).name}
+        </p>
       </CartModal>
     </motion.div>
   )

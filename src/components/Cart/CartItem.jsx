@@ -5,16 +5,19 @@ import {
   AiFillDelete,
   AiFillDollarCircle,
 } from 'react-icons/ai'
+import useGetProducts from '../../hooks/api/useGetProducts.js'
 import useCartContext from '../../hooks/useCartContext.js'
 import useThemeContext from '../../hooks/useThemeContext.js'
 
 const CartItem = ({ selectedCustomer }) => {
   const { setCart, cart } = useCartContext()
   const { isLight } = useThemeContext()
+  const { data: { data } = {} } = useGetProducts()
 
   const selectedCustomerItems = cart.find((item) => {
     return item.userId === selectedCustomer.userId && item.items
   })
+
   // this deletes the cart item
   const handleDeleteCartItem = (productIdToRemove) => {
     setCart((prevCart) =>
@@ -43,11 +46,14 @@ const CartItem = ({ selectedCustomer }) => {
           >
             <div className='rounded-3xl border-2 border-gray-200 bg-blue-500 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4'>
               <div className='col-span-12 lg:col-span-2 img box'>
-                {/* <img
-                  src={ProductImg}
+                <img
+                  src={
+                    data?.find((product) => product.name === item.productName)
+                      ?.imageURL
+                  }
                   alt='product'
                   className='max-lg:w-full lg:w-[180px] rounded-full'
-                /> */}
+                />
               </div>
               <div className='col-span-12 lg:col-span-10 relative detail w-full lg:pl-3'>
                 <div className='flex items-center justify-between w-full mb-4'>

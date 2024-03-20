@@ -3,7 +3,7 @@ import { ThemeContext } from '../context/index.js'
 
 const ThemeProvider = ({ children }) => {
   const [isLight, setIsLight] = useState(
-    JSON.parse(localStorage.getItem('repliq-theme-light'))
+    JSON.parse(localStorage.getItem('repliq-theme-light')) ?? true
   )
 
   return (
