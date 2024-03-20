@@ -46,7 +46,7 @@ const AdminOrderList = () => {
 
   if (!isLoading && !isError && data?.length > 0) {
     content = data?.map((order) => (
-      <tr key={order.id}>
+      <tr key={order.id} className={`${isLight ? 'text-black' : 'text-white'}`}>
         <td className='px-6 py-4 whitespace-nowrap'>{order.id}</td>
         <td className='px-6 py-4 whitespace-nowrap'>{order.customerName}</td>
         <td className='px-6 py-4 whitespace-nowrap'>$ {order.totalAmount}</td>

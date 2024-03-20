@@ -48,7 +48,7 @@ const Navbar = () => {
               to='/'
               className={`text-slate-700 ${
                 isLight ? 'text-stone-800' : 'text-white'
-              } text-3xl font-bold font-poppins`}
+              } text-xl sm:text-2xl font-bold font-poppins`}
             >
               Repliq E-commerce
             </Link>
@@ -93,7 +93,7 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-          <NavContent isOpen={isOpen} />
+          <NavContent isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </div>
     </nav>
