@@ -1,16 +1,13 @@
 import useGetProducts from '../../hooks/api/useGetProducts.js'
 import useCategoryContext from '../../hooks/useCategoryContext.js'
 import useProductContext from '../../hooks/useProductContext.js'
-import useQuantity from '../../hooks/useQuantity.js'
 import useThemeContext from '../../hooks/useThemeContext.js'
 
 const ModalCard = ({ product, setIsModalOpen }) => {
-  const { productQuantity } = useQuantity()
   const { data: { data } = {} } = useGetProducts()
   const { setProducts } = useProductContext()
   const { setIsFiltering, setCategory } = useCategoryContext()
-  const { id, category, description, name, price, rating, imageURL } = product
-  const hasQuantity = productQuantity.find((item) => item.id === id)
+  const { category, description, name, price, rating, imageURL } = product
   const { isLight } = useThemeContext()
 
   const handleChangeCategory = (category) => {

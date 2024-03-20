@@ -9,6 +9,7 @@ const CartDrawer = ({ children }) => {
   const { isLight } = useThemeContext()
 
   const [open, setOpen] = useState(false)
+
   const showDrawer = () => {
     setOpen(true)
   }

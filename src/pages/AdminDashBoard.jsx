@@ -11,7 +11,6 @@ import useThemeContext from '../hooks/useThemeContext.js'
 
 const AdminDashboard = () => {
   const { isLight } = useThemeContext()
-
   const { data: { data } = {}, isLoading, isError } = useGetProducts()
   const [customerModalOpen, setCustomerModalOpen] = useState(false)
   const { data: { data: orderData } = {} } = useGetProducts()
@@ -54,12 +53,10 @@ const AdminDashboard = () => {
             >
               Products
             </Link>
-            {/* Add more navigation links as needed */}
           </nav>
         </div>
       </header>
 
-      {/* Main productLength */}
       <main className='max-w-7xl mx-auto py-6 sm:px-6 lg:px-8'>
         <PriceChart products={data} />
         <div className='px-4 py-6 sm:px-0'>

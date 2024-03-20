@@ -12,7 +12,7 @@ const Search = ({ productsData }) => {
     searchProducts(value)
   }
 
-  // debounce the search
+  // debounce the search, add delay of 300 ms
   const searchProducts = useDebounce((value) => {
     setProducts(
       productsData.filter((product) =>

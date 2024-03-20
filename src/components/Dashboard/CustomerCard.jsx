@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import useThemeContext from '../../hooks/useThemeContext.js'
-import CustomerModal from './CustomerModal.jsx'
+import CustomerModal from '../Modals/CustomerModal.jsx'
 
 const CustomerCard = ({ customer }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)

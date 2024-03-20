@@ -10,7 +10,7 @@ const Customers = () => {
     data: { data: customerData } = {},
     isLoading: customerLoading,
     isError: customerError,
-  } = useGetCustomers()
+  } = useGetCustomers() // api call to get customers
 
   const { setCustomer, customer } = useCustomerContext()
   // set the customers on load

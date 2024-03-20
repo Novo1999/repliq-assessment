@@ -14,6 +14,7 @@ const CartItem = ({ selectedCustomer }) => {
   const { isLight } = useThemeContext()
   const { data: { data } = {} } = useGetProducts()
 
+  // find the item from the cart for the selected customer
   const selectedCustomerItems = cart.find((item) => {
     return item.userId === selectedCustomer.userId && item.items
   })
@@ -101,6 +102,7 @@ const CartItem = ({ selectedCustomer }) => {
             .toFixed(2)}
         </p>
       )}
+      {/* show message when user has no item */}
       <p
         className={`font-poppins text-center ${
           isLight ? 'text-black' : 'text-white'

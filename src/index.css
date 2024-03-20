@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* custom css for ant modal and drawer */
 .custom-modal .ant-modal-content {
   background-color: #292524;
 }

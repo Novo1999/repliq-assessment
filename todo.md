@@ -1,11 +1,11 @@
-# add error page
+<!-- # add error page -->
 
-# dark mode
+<!-- # dark mode -->
 
-# add scroll progress
+<!-- # add scroll progress -->
 
-# top button
+<!-- # top button -->
 
-# fix the cart quantity showing after adding to cart
+<!-- # fix the cart quantity showing after adding to cart -->
 
-# confirm modal for deletion
+<!-- # confirm modal for deletion -->

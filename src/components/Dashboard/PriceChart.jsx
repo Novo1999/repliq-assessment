@@ -15,6 +15,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const PriceChart = ({ products }) => {
   const { isLight } = useThemeContext()
 
+  // options for the chart
   const options = {
     responsive: true,
     scales: {

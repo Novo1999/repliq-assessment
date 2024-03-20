@@ -12,6 +12,7 @@ const Login = () => {
     setError,
   } = useForm()
   const { setUser, users } = useAuthContext()
+  // login function
   const handleLogin = (data) => {
     const { username, phoneNumber } = data
 
@@ -30,6 +31,7 @@ const Login = () => {
   const onSubmit = (data) => {
     handleLogin(data)
   }
+
   return (
     <div className='flex justify-center items-center h-screen font-poppins'>
       <form
@@ -68,6 +70,7 @@ const Login = () => {
         >
           Login
         </button>
+        {/* after login error like register error */}
         <p className='text-red-500'>
           {errors?.root?.loginError?.type === 'login' &&
             errors?.root?.loginError?.message}

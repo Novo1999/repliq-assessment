@@ -86,6 +86,7 @@ const ProductList = () => {
             </motion.div>
           ))}
         </div>
+        {/* intersects this for more data */}
         {hasMore && (
           <div
             ref={loaderRef}
@@ -94,6 +95,7 @@ const ProductList = () => {
             <Loader />
           </div>
         )}
+        {/* shows message if there is no more data */}
         {!hasMore && (
           <>
             <p className='relative bottom-20 text-center'>End of list</p>

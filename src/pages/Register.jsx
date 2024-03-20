@@ -79,6 +79,7 @@ const Register = () => {
         >
           Register
         </button>
+        {/* if there is any error after register happens, it will show here, in real world, an api error response can be shown here */}
         <p className='text-red-500'>
           {errors?.root?.registerError?.type === 'register' &&
             errors?.root?.registerError?.message}

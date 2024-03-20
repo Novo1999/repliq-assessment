@@ -7,17 +7,19 @@ const CustomerForm = ({ setIsModalOpen }) => {
   const [form] = Form.useForm()
   const { isLight } = useThemeContext()
 
+  // add new customer from the form data
   const onFinish = (values) => {
     setCustomer((prevCustomers) => [
       ...prevCustomers,
       { ...values, id: crypto.randomUUID() },
     ])
-    // reset field after adding
     setIsModalOpen(false)
     toast.success(`Added new customer ${values.name}`, { autoClose: 1000 })
+    // reset field after adding
     form.resetFields()
   }
 
+  // show error from form
   const onFinishFailed = (errorInfo) => {
     console.error('Failed:', errorInfo)
   }

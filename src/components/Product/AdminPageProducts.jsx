@@ -102,11 +102,13 @@ const AdminPageProducts = ({ data }) => {
             )
           )}
       </AnimatePresence>
+      {/* when this div is intersected, load more data and show a loader while doing it */}
       {hasMore && (
         <div ref={loaderRef} className='flex justify-center'>
           <Loader />
         </div>
       )}
+      {/* if there is no more data, show this message */}
       {!hasMore && (
         <>
           <p className='text-center'>End of list</p>

@@ -1,56 +1,23 @@
 import { motion } from 'framer-motion'
-import { useEffect, useRef } from 'react'
-import useGetProducts from '../../hooks/api/useGetProducts.js'
 import useCategoryContext from '../../hooks/useCategoryContext.js'
 import useDropdownAnimation from '../../hooks/useDropdownAnimation.js'
+import useFilter from '../../hooks/useFilter.js'
 import useProductContext from '../../hooks/useProductContext.js'
 import MenuListItem from '../ui/MenuListItem.jsx'
 
 const FilterProducts = ({ isOpen, setIsOpen }) => {
-  const { products, setProducts } = useProductContext()
-  const { data: { data } = {} } = useGetProducts()
+  const { products } = useProductContext()
   const scope = useDropdownAnimation(isOpen, products)
-  const menuRef = useRef(null)
-
-  const { categories, isFiltering, setIsFiltering, category, setCategory } =
-    useCategoryContext()
-
-  const handleChangeCategory = (category) => {
-    if (category) {
-      setCategory(category)
-      setIsFiltering(true)
-      window.scroll({ top: 200, behavior: 'smooth' })
-    }
-    setProducts(() => {
-      return data.filter((product) => product.category === category)
-    })
-  }
-
-  const handleCancelFilter = () => {
-    setProducts(data)
-    setIsFiltering(false)
-    setCategory('')
-  }
-
-  // close when clicked outside
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsOpen(false)
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener('click', handleOutsideClick)
-    }
-
-    return () => {
-      document.removeEventListener('click', handleOutsideClick)
-    }
-  }, [setIsOpen, isOpen])
+  const { categories, isFiltering, category } = useCategoryContext()
+  // custom hook to handle filter
+  const { handleCancelFilter, handleChangeFilter, menuRef } = useFilter(
+    isOpen,
+    setIsOpen
+  )
 
   return (
     <div className='flex'>
+      {/* show cancel filter button when user filters */}
       {isFiltering && (
         <button
           onClick={handleCancelFilter}
@@ -75,7 +42,7 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
       <nav
         className='menu'
         ref={scope}
-        // when click on nav it would not open so we need to stop propagation here
+        // when click on the menu it would not open so we need to stop propagation here
         onClick={(e) => {
           e.stopPropagation()
           setIsOpen(!isOpen)
@@ -102,7 +69,7 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
           }}
         >
           {categories?.map((cat) => (
-            <MenuListItem onClick={() => handleChangeCategory(cat)} key={cat}>
+            <MenuListItem onClick={() => handleChangeFilter(cat)} key={cat}>
               {cat}
             </MenuListItem>
           ))}

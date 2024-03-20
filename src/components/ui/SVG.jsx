@@ -12,7 +12,6 @@ export const DeleteSVG = () => {
         cx={17}
         cy={17}
         r={17}
-        fill=''
       />
       <path
         className='stroke-red-500 transition-all duration-500 group-hover:stroke-white'
@@ -37,7 +36,6 @@ export const MinusSVG = () => {
     >
       <path
         d='M4.5 9.5H13.5'
-        stroke=''
         strokeWidth='1.6'
         strokeLinecap='round'
         strokeLinejoin='round'
@@ -58,7 +56,6 @@ export const PlusSVG = () => {
     >
       <path
         d='M3.75 9.5H14.25M9 14.75V4.25'
-        stroke=''
         strokeWidth='1.6'
         strokeLinecap='round'
         strokeLinejoin='round'

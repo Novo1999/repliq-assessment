@@ -8,9 +8,10 @@ import CartModal from '../Modals/CartModal.jsx'
 const CartUserContent = ({ customer }) => {
   const [selectedCustomer, setSelectedCustomer] = useState()
   const { isLight } = useThemeContext()
-
   const [isModalOpen, setIsModalOpen] = useState()
-  const { data: { data: customerData } = {} } = useGetCustomers()
+  const { data: { data: customerData } = {} } = useGetCustomers() // api call to get customer data
+
+  // get only the name from the customer data
   const name = customerData?.find(
     (customer) => customer.id === selectedCustomer?.userId
   )?.name
