@@ -12,10 +12,12 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
   const scope = useDropdownAnimation(isOpen, products)
   const menuRef = useRef(null)
 
-  const { categories, isFiltering, setIsFiltering } = useCategoryContext()
+  const { categories, isFiltering, setIsFiltering, category, setCategory } =
+    useCategoryContext()
 
   const handleChangeCategory = (category) => {
     if (category) {
+      setCategory(category)
       setIsFiltering(true)
       window.scroll({ top: 200, behavior: 'smooth' })
     }
@@ -27,6 +29,7 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
   const handleCancelFilter = () => {
     setProducts(data)
     setIsFiltering(false)
+    setCategory('')
   }
 
   // close when clicked outside
@@ -83,7 +86,7 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
           className='bg-white rounded-lg flex justify-between h-10 p-3'
           whileTap={{ scale: 0.97 }}
         >
-          Filter By
+          {category || 'Filter By'}
           <div className='arrow' style={{ transformOrigin: '50% 55%' }}>
             <svg width='15' height='15' viewBox='0 0 20 20'>
               <path d='M0 7 L 20 7 L 10 16' />

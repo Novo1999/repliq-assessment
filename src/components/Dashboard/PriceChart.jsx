@@ -25,6 +25,7 @@ export const options = {
 }
 
 const PriceChart = ({ products }) => {
+  // take names as labels
   const labels = products?.map((product) => product.name)
   const data = {
     labels,
@@ -37,7 +38,16 @@ const PriceChart = ({ products }) => {
     ],
   }
 
-  return <Bar options={options} data={data} />
+  return (
+    <>
+      <div className='hidden sm:block'>
+        <Bar options={options} data={data} />
+      </div>
+      <div className='block sm:hidden'>
+        <Bar height={300} options={options} data={data} />
+      </div>
+    </>
+  )
 }
 
 export default PriceChart

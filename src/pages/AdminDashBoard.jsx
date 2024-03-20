@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { IoMdAddCircle } from 'react-icons/io'
@@ -57,23 +58,37 @@ const AdminDashboard = () => {
           {/* Dashboard Cards */}
           <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
             {/* Card 1 */}
-            <div className='bg-white rounded-lg shadow-md p-6'>
-              <h2 className='text-lg font-semibold mb-2'>Total Products</h2>
-              <div className='text-3xl font-bold text-gray-800'>
-                {productLength}
-              </div>
-            </div>
+            <motion.div
+              whileHover={{ translateY: -5 }}
+              className='bg-blue-500 hover:bg-blue-400 transition-all rounded-lg shadow-md p-6'
+            >
+              <Link to='/products'>
+                <h2 className='text-lg font-semibold mb-2 text-white'>
+                  Total Products
+                </h2>
+                <div className='text-3xl font-bold text-gray-800'>
+                  {productLength}
+                </div>
+              </Link>
+            </motion.div>
             {/* Card 2 */}
-            <div className='bg-white rounded-lg shadow-md p-6'>
-              <h2 className='text-lg font-semibold mb-2'>Total Orders</h2>
-              <div className='text-3xl font-bold text-gray-800'>
-                {!orderData ? (
-                  <AiOutlineLoading3Quarters className='animate-spin' />
-                ) : (
-                  orderData?.length
-                )}
-              </div>
-            </div>
+            <motion.div
+              whileHover={{ translateY: -5 }}
+              className='bg-orange-400 hover:bg-orange-300 transition-all rounded-lg shadow-md p-6'
+            >
+              <Link to='/orders'>
+                <h2 className='text-lg font-semibold mb-2 text-white'>
+                  Total Orders
+                </h2>
+                <div className='text-3xl font-bold text-gray-800'>
+                  {!orderData ? (
+                    <AiOutlineLoading3Quarters className='animate-spin' />
+                  ) : (
+                    orderData?.length
+                  )}
+                </div>
+              </Link>
+            </motion.div>
             {/* Add more cards for different metrics */}
           </div>
 

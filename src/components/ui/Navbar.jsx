@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { AiTwotoneShop } from 'react-icons/ai'
 import { ImCart } from 'react-icons/im'
 import { Link } from 'react-router-dom'
 import useAuthContext from '../../hooks/useAuthContext.js'
@@ -23,6 +25,19 @@ const Navbar = () => {
       <div className='container px-6 py-4 mx-auto'>
         <div className='lg:flex lg:items-center lg:justify-between'>
           <div className='flex items-center justify-between'>
+            <motion.div
+              initial={{ y: -10 }}
+              animate={{
+                y: [10, -10],
+                transition: {
+                  repeatType: 'reverse',
+                  repeat: Infinity,
+                  duration: 1,
+                },
+              }}
+            >
+              <AiTwotoneShop className='text-5xl text-black' />
+            </motion.div>
             <Link
               to='/'
               className='text-slate-700 text-3xl font-bold font-poppins'

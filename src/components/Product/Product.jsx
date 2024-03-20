@@ -11,11 +11,12 @@ const { Meta } = Card
 const Product = ({ product }) => {
   const { category, description, name, price } = product
   const { data: { data } = {} } = useGetProducts()
-  const { setIsFiltering } = useCategoryContext()
+  const { setIsFiltering, setCategory } = useCategoryContext()
   const { setProducts } = useProductContext()
 
   const handleChangeCategory = (category) => {
     if (category) {
+      setCategory(category)
       setIsFiltering(true)
       window.scroll({ top: 200, behavior: 'smooth' })
     }

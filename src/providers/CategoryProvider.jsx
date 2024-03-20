@@ -7,10 +7,11 @@ const CategoryProvider = ({ children }) => {
   const { data: { data } = {} } = useGetProducts()
   const categories = getUniqueCategories(data)
   const [isFiltering, setIsFiltering] = useState(false)
+  const [category, setCategory] = useState('')
 
   return (
     <CategoryContext.Provider
-      value={{ categories, isFiltering, setIsFiltering }}
+      value={{ categories, isFiltering, setIsFiltering, category, setCategory }}
     >
       {children}
     </CategoryContext.Provider>
