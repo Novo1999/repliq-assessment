@@ -1,21 +1,29 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import useGetCustomers from '../../hooks/api/useGetCustomers.js'
+import useCustomerContext from '../../hooks/useCustomer.js'
 import Error from '../misc/Error.jsx'
-import CustomerModal from './CustomerModal.jsx'
+import CustomerCard from './CustomerCard.jsx'
 
 const Customers = () => {
-  const [selectedCustomerId, setSelectedCustomerId] = useState(null)
   const {
     data: { data: customerData } = {},
     isLoading: customerLoading,
     isError: customerError,
   } = useGetCustomers()
 
-  let customers = null
+  const { setCustomer, customer } = useCustomerContext()
+  // set the customers on load
+  useEffect(() => {
+    if (!customerLoading && !customerError && customerData?.length > 0) {
+      setCustomer(customerData)
+    }
+  }, [customerData, customerError, customerLoading, setCustomer])
+
+  let content = null
 
   if (customerLoading) {
-    customers = (
+    content = (
       <tr>
         <td>
           <AiOutlineLoading3Quarters className='animate-spin' />
@@ -25,43 +33,20 @@ const Customers = () => {
   }
 
   if (!customerLoading && customerError) {
-    customers = <p className='text-red-400'>Error Getting customers</p>
+    content = <p className='text-red-400'>Error Getting customers</p>
   }
 
   if (!customerLoading && !customerError && customerData?.length === 0) {
-    customers = (
+    content = (
       <Error error={customerError} message='Could not get customers list' />
     )
   }
 
   if (!customerLoading && !customerError && customerData?.length > 0) {
-    customers = customerData.map((customer) => {
-      return (
-        <tr key={customer.id}>
-          <td className='px-6 py-4 whitespace-nowrap text-blue-500 cursor-pointer'>
-            <span onClick={() => setSelectedCustomerId(customer.id)}>
-              <div className='tooltip tooltip-info' data-tip='View Details'>
-                {customer.name}
-              </div>
-            </span>
-            {selectedCustomerId === customer.id && (
-              <CustomerModal
-                isModalOpen={true}
-                setIsModalOpen={() => setSelectedCustomerId(null)}
-                customer={customer}
-              />
-            )}
-          </td>
-          <td className='px-6 py-4 whitespace-nowrap text-purple-500'>
-            {customer.email}
-          </td>
-          <td className='px-6 py-4 whitespace-nowrap text-green-600'>
-            {customer.address}
-          </td>
-        </tr>
-      )
+    content = customer.map((customer) => {
+      return <CustomerCard customer={customer} key={customer.id} />
     })
   }
-  return customers
+  return content
 }
 export default Customers

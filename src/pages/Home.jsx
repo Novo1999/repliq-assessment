@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import ProductContainer from '../components/Product/ProductContainer.jsx'
 import ProductList from '../components/Product/ProductList.jsx'
 import Carousel from '../components/ui/Carousel.jsx'
@@ -20,7 +20,6 @@ const Home = () => {
       <ProductContainer>
         <ProductList />
       </ProductContainer>
-      <ToastContainer />
     </>
   )
 }

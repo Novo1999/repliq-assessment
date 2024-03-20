@@ -57,7 +57,6 @@ const AdminDashboard = () => {
         <div className='px-4 py-6 sm:px-0'>
           {/* Dashboard Cards */}
           <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-            {/* Card 1 */}
             <motion.div
               whileHover={{ translateY: -5 }}
               className='bg-blue-500 hover:bg-blue-400 transition-all rounded-lg shadow-md p-6'
@@ -71,7 +70,6 @@ const AdminDashboard = () => {
                 </div>
               </Link>
             </motion.div>
-            {/* Card 2 */}
             <motion.div
               whileHover={{ translateY: -5 }}
               className='bg-orange-400 hover:bg-orange-300 transition-all rounded-lg shadow-md p-6'
@@ -89,17 +87,16 @@ const AdminDashboard = () => {
                 </div>
               </Link>
             </motion.div>
-            {/* Add more cards for different metrics */}
           </div>
 
           <div className='mt-8'>
             <div className='flex justify-between mb-4'>
               <h2 className='text-lg font-semibold mb-4'>Customers</h2>
-              {/* add customer */}
               <CustomerFormModal
                 isModalOpen={customerModalOpen}
                 setIsModalOpen={setCustomerModalOpen}
               >
+                {/* add customer */}
                 <button
                   onClick={() => setCustomerModalOpen(true)}
                   className='btn btn-info'
@@ -125,7 +122,6 @@ const AdminDashboard = () => {
                     </th>
                   </tr>
                 </thead>
-                {/* Table body (Sample data, replace with actual orders data) */}
                 <tbody className='bg-white divide-y divide-gray-200'>
                   <Customers />
                 </tbody>

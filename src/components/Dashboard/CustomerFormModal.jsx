@@ -34,7 +34,7 @@ const CustomerFormModal = ({ isModalOpen, setIsModalOpen, children }) => {
             <div className='text-center text-xl'>
               <p>Add Customer details</p>
             </div>
-            <CustomerForm />
+            <CustomerForm setIsModalOpen={setIsModalOpen} />
           </div>
         </div>
       </Modal>
