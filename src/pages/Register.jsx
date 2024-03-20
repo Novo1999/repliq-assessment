@@ -23,7 +23,7 @@ const Register = () => {
       })
     } else {
       setUsers((prevUsers) => [...prevUsers, { phoneNumber, username }]) // adding new user to the users array
-      setUser({ username, accessToken: crypto.randomUUID() }) // setting user on register
+      setUser({ username, accessToken: crypto.randomUUID() }) // setting user on register and creating random accessToken
       navigate('/')
     }
   }

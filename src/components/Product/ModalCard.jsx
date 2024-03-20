@@ -1,9 +1,28 @@
+import useGetProducts from '../../hooks/api/useGetProducts.js'
+import useCategoryContext from '../../hooks/useCategoryContext.js'
+import useProductContext from '../../hooks/useProductContext.js'
 import useQuantity from '../../hooks/useQuantity.js'
 
-const ModalCard = ({ product }) => {
+const ModalCard = ({ product, setIsModalOpen }) => {
   const { productQuantity } = useQuantity()
+  const { data: { data } = {} } = useGetProducts()
+  const { setProducts } = useProductContext()
+  const { setIsFiltering, setCategory } = useCategoryContext()
   const { id, category, description, name, price, rating, imageURL } = product
   const hasQuantity = productQuantity.find((item) => item.id === id)
+
+  const handleChangeCategory = (category) => {
+    if (category) {
+      setCategory(category)
+      setIsFiltering(true)
+      window.scroll({ top: 200, behavior: 'smooth' })
+    }
+    setProducts(() => {
+      return data.filter((product) => product.category === category)
+    })
+    setIsModalOpen(false)
+  }
+
   return (
     <div className='flex w-full flex-col md:flex-row overflow-hidden rounded-lg h-fit font-poppins'>
       <div className='w-fit sm:w-48'>
@@ -24,7 +43,12 @@ const ModalCard = ({ product }) => {
               </svg>
             ))}
           </div>
-          <div className='text-md rounded-xl p-1 text-black bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer'>
+          <div
+            onClick={() => {
+              handleChangeCategory(category)
+            }}
+            className='text-md rounded-xl p-1 text-black bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer'
+          >
             {category}
           </div>
         </div>

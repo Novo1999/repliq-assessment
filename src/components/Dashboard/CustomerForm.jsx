@@ -3,15 +3,17 @@ import { toast } from 'react-toastify'
 import useCustomerContext from '../../hooks/useCustomer.js'
 const CustomerForm = ({ setIsModalOpen }) => {
   const { setCustomer } = useCustomerContext()
+  const [form] = Form.useForm()
 
   const onFinish = (values) => {
     setCustomer((prevCustomers) => [
       ...prevCustomers,
       { ...values, id: crypto.randomUUID() },
     ])
-    console.log(values)
+    // reset field after adding
     setIsModalOpen(false)
     toast.success(`Added new customer ${values.name}`, { autoClose: 1000 })
+    form.resetFields()
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -20,6 +22,7 @@ const CustomerForm = ({ setIsModalOpen }) => {
 
   return (
     <Form
+      form={form}
       className='sm:mr-[80px] sm:mt-[60px]'
       name='customer form'
       labelCol={{

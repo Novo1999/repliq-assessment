@@ -28,7 +28,7 @@ const ProductModal = ({ isModalOpen, setIsModalOpen, children, product }) => {
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <ModalCard product={product} />
+        <ModalCard setIsModalOpen={setIsModalOpen} product={product} />
       </Modal>
     </>
   )

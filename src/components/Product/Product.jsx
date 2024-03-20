@@ -1,7 +1,6 @@
 import { Card } from 'antd'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import ProductImg from '../../assets/product.jpeg'
 import useGetProducts from '../../hooks/api/useGetProducts.js'
 import useCategoryContext from '../../hooks/useCategoryContext.js'
 import useProductContext from '../../hooks/useProductContext.js'
@@ -29,7 +28,7 @@ const Product = ({ product }) => {
   return (
     <motion.div whileHover={{ translateY: -5 }}>
       <Card
-        className='w-72 shadow-xl min-h-96 xl:w-[400px] font-poppins cursor-pointer h-full bg-blue-500 border-none'
+        className='w-72 shadow-xl xl:w-[400px] font-poppins cursor-pointer h-full bg-blue-500 border-none'
         cover={
           <ProductModal
             isModalOpen={isModalOpen}
@@ -37,7 +36,7 @@ const Product = ({ product }) => {
             product={product}
           >
             <img
-              className='min-h-full object-cover w-full'
+              className='h-96 object-cover w-full'
               alt='example'
               src={imageURL}
             />

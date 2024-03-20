@@ -60,6 +60,9 @@ const ProductList = () => {
           {/* search */}
           <Search productsData={data} />
           {/* filter */}
+          <p className='mt-3 text-blue-500 font-semibold text-lg'>
+            {products?.length} Products
+          </p>
           <FilterProducts isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
 

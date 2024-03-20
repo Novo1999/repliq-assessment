@@ -17,7 +17,7 @@ const Login = () => {
 
     // check if phoneNumber exists
     if (users.find((user) => user.phoneNumber === phoneNumber)) {
-      setUser({ username, accessToken: crypto.randomUUID() }) // setting user on register
+      setUser({ username, accessToken: crypto.randomUUID() }) // setting user on login and creating random accessToken
       navigate('/')
     } else {
       setError('root.loginError', {
