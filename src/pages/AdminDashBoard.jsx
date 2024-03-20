@@ -7,8 +7,11 @@ import CustomerFormModal from '../components/Dashboard/CustomerFormModal.jsx'
 import Customers from '../components/Dashboard/Customers.jsx'
 import PriceChart from '../components/Dashboard/PriceChart.jsx'
 import useGetProducts from '../hooks/api/useGetProducts.js'
+import useThemeContext from '../hooks/useThemeContext.js'
 
 const AdminDashboard = () => {
+  const { isLight } = useThemeContext()
+
   const { data: { data } = {}, isLoading, isError } = useGetProducts()
   const [customerModalOpen, setCustomerModalOpen] = useState(false)
   const { data: { data: orderData } = {} } = useGetProducts()
@@ -34,7 +37,9 @@ const AdminDashboard = () => {
   return (
     <motion.div
       exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 0.5 } }}
-      className='min-h-screen bg-gray-100 font-poppins'
+      className={`min-h-screen ${
+        isLight ? 'bg-gray-100' : 'bg-stone-800'
+      }  font-poppins`}
     >
       {/* Header */}
       <header className='bg-white shadow-sm'>
@@ -109,10 +114,14 @@ const AdminDashboard = () => {
                 </button>
               </CustomerFormModal>
             </div>
-            <div className='bg-white rounded-lg shadow-md overflow-x-auto'>
+            <div className='border rounded-lg shadow-md overflow-x-auto'>
               <table className='min-w-full divide-y divide-gray-200'>
                 {/* Table header */}
-                <thead className='bg-gray-50'>
+                <thead
+                  className={`bg-gray-50 ${
+                    isLight ? 'bg-gray-100' : 'bg-stone-800'
+                  }`}
+                >
                   <tr>
                     <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
                       Name

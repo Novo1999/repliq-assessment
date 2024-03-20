@@ -8,23 +8,38 @@ import {
   Tooltip,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
+import useThemeContext from '../../hooks/useThemeContext.js'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Product Prices',
-    },
-  },
-}
-
 const PriceChart = ({ products }) => {
+  const { isLight } = useThemeContext()
+
+  const options = {
+    responsive: true,
+    scales: {
+      y: {
+        grid: {
+          color: isLight ? 'black' : 'gray',
+        },
+      },
+      x: {
+        grid: {
+          color: isLight ? 'black' : 'gray',
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Product Prices',
+      },
+    },
+  }
+
   // take names as labels
   const labels = products?.map((product) => product.name)
   const data = {

@@ -1,7 +1,10 @@
 import { Modal } from 'antd'
+import useThemeContext from '../../hooks/useThemeContext.js'
 import ModalCard from './ModalCard.jsx'
 
 const ProductModal = ({ isModalOpen, setIsModalOpen, children, product }) => {
+  const { isLight } = useThemeContext()
+
   const showModal = () => {
     setIsModalOpen(true)
   }
@@ -27,6 +30,7 @@ const ProductModal = ({ isModalOpen, setIsModalOpen, children, product }) => {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        wrapClassName={` ${isLight ? '' : 'custom-modal'}`}
       >
         <ModalCard setIsModalOpen={setIsModalOpen} product={product} />
       </Modal>

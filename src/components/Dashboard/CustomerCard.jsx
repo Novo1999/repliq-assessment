@@ -1,10 +1,16 @@
 import { useState } from 'react'
+import useThemeContext from '../../hooks/useThemeContext.js'
 import CustomerModal from './CustomerModal.jsx'
 
 const CustomerCard = ({ customer }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const { isLight } = useThemeContext()
+
   return (
-    <tr key={customer.id}>
+    <tr
+      key={customer.id}
+      className={`${isLight ? 'bg-white' : 'bg-stone-800'}`}
+    >
       <td className='px-6 py-4 whitespace-nowrap text-blue-500 cursor-pointer'>
         <span onClick={() => setIsModalOpen(true)}>
           <div className='tooltip tooltip-info' data-tip='View Details'>
