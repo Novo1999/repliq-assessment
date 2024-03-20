@@ -1,6 +1,7 @@
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { message, Upload } from 'antd'
 import { useState } from 'react'
+import useThemeContext from '../../hooks/useThemeContext.js'
 const getBase64 = (img, callback) => {
   const reader = new FileReader()
   reader.addEventListener('load', () => callback(reader.result))
@@ -18,6 +19,7 @@ const beforeUpload = (file) => {
   return isJpgOrPng && isLt2M
 }
 const FileUpload = () => {
+  const { isLight } = useThemeContext()
   const [loading, setLoading] = useState(false)
   const [imageUrl, setImageUrl] = useState()
   const handleChange = (info) => {
@@ -55,7 +57,9 @@ const FileUpload = () => {
     <Upload
       name='avatar'
       listType='picture-card'
-      className='avatar-uploader !flex !justify-center'
+      className={`avatar-uploader ${
+        isLight ? 'text-black' : 'text-white'
+      } !flex !justify-center`}
       showUploadList={false}
       action='https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188'
       beforeUpload={beforeUpload}

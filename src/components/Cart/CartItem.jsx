@@ -5,11 +5,12 @@ import {
   AiFillDelete,
   AiFillDollarCircle,
 } from 'react-icons/ai'
-import ProductImg from '../../assets/product.jpeg'
 import useCartContext from '../../hooks/useCartContext.js'
+import useThemeContext from '../../hooks/useThemeContext.js'
 
 const CartItem = ({ selectedCustomer }) => {
   const { setCart, cart } = useCartContext()
+  const { isLight } = useThemeContext()
 
   const selectedCustomerItems = cart.find((item) => {
     return item.userId === selectedCustomer.userId && item.items
@@ -42,11 +43,11 @@ const CartItem = ({ selectedCustomer }) => {
           >
             <div className='rounded-3xl border-2 border-gray-200 bg-blue-500 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4'>
               <div className='col-span-12 lg:col-span-2 img box'>
-                <img
+                {/* <img
                   src={ProductImg}
                   alt='product'
                   className='max-lg:w-full lg:w-[180px] rounded-full'
-                />
+                /> */}
               </div>
               <div className='col-span-12 lg:col-span-10 relative detail w-full lg:pl-3'>
                 <div className='flex items-center justify-between w-full mb-4'>
@@ -94,7 +95,11 @@ const CartItem = ({ selectedCustomer }) => {
             .toFixed(2)}
         </p>
       )}
-      <p className='font-poppins text-center'>
+      <p
+        className={`font-poppins text-center ${
+          isLight ? 'text-black' : 'text-white'
+        }`}
+      >
         {selectedCustomerItems.items.length < 1 && 'User has no item'}
       </p>
     </AnimatePresence>

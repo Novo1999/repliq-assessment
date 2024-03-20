@@ -3,9 +3,25 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import OrderContent from '../components/Order/OrderContent.jsx'
 import Loader from '../components/ui/Loader.jsx'
 import useGetOrders from '../hooks/api/useGetOrders.js'
+import useThemeContext from '../hooks/useThemeContext.js'
 import { setOrderStatsBg } from '../utils/setOrderStatusBg.js'
 
+const tableHeaderTitles = [
+  'Order ID',
+  'Customer Name',
+  'Total Amount',
+  'Status',
+  'Actions',
+]
+
+const THead = ({ children }) => (
+  <th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>
+    {children}
+  </th>
+)
+
 const AdminOrderList = () => {
+  const { isLight } = useThemeContext()
   const { data: { data } = {}, isLoading, isError } = useGetOrders()
   let content = null
 
@@ -30,14 +46,10 @@ const AdminOrderList = () => {
   if (!isLoading && !isError && data?.length > 0) {
     content = data?.map((order) => (
       <tr key={order.id}>
-        <td className='px-6 py-4 whitespace-nowrap text-black'>{order.id}</td>
-        <td className='px-6 py-4 whitespace-nowrap text-black'>
-          {order.customerName}
-        </td>
-        <td className='px-6 py-4 whitespace-nowrap text-black'>
-          $ {order.totalAmount}
-        </td>
-        <td className='px-6 py-4 whitespace-nowrap text-black'>
+        <td className='px-6 py-4 whitespace-nowrap'>{order.id}</td>
+        <td className='px-6 py-4 whitespace-nowrap'>{order.customerName}</td>
+        <td className='px-6 py-4 whitespace-nowrap'>$ {order.totalAmount}</td>
+        <td className='px-6 py-4 whitespace-nowrap'>
           <p
             className={`${setOrderStatsBg(
               order
@@ -66,26 +78,18 @@ const AdminOrderList = () => {
             <p className='text-gray-600'>No orders available</p>
           ) : (
             <table className='min-w-full divide-y divide-gray-200'>
-              <thead className='bg-gray-50'>
+              <thead className={`${isLight ? 'bg-gray-50' : 'bg-stone-800'}`}>
                 <tr>
-                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                    Order ID
-                  </th>
-                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                    Customer Name
-                  </th>
-                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                    Total Amount
-                  </th>
-                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                    Status
-                  </th>
-                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                    Actions
-                  </th>
+                  {tableHeaderTitles.map((title, index) => (
+                    <THead key={index}>{title}</THead>
+                  ))}
                 </tr>
               </thead>
-              <tbody className='bg-white divide-y divide-gray-200'>
+              <tbody
+                className={`divide-y ${
+                  isLight ? 'bg-white' : 'bg-stone-800'
+                } divide-gray-200`}
+              >
                 {content}
               </tbody>
             </table>

@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 .custom-modal .ant-modal-content {
-  background-color: black;
+  background-color: #292524;
 }
 
 .custom-modal .ant-modal-header,
 .custom-modal .ant-modal-footer {
-  background-color: black;
+  background-color: #292524;
+}
+
+.custom-modal .ant-modal-close-x {
+  color: white;
 }

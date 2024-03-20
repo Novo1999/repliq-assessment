@@ -1,5 +1,6 @@
 import { Button, Select } from 'antd'
 import { useForm } from 'react-hook-form'
+import useThemeContext from '../../hooks/useThemeContext.js'
 import getUniqueCategories from '../../utils/getUniqueCategories.js'
 import FileUpload from './FileUpload.jsx'
 
@@ -14,6 +15,9 @@ const ProductForm = ({ products }) => {
     setValue,
     formState: { errors },
   } = useForm()
+
+  const { isLight } = useThemeContext()
+
   const onSubmit = (data) => {
     console.log(data)
   }
@@ -21,9 +25,13 @@ const ProductForm = ({ products }) => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className='w-96 space-y-2 bg-white p-10 h-fit mt-48 rounded-lg shadow-xl'
+      className={`w-96 space-y-2 ${
+        isLight
+          ? 'bg-white shadow-xl'
+          : 'bg-stone-800 border shadow-white shadow-md'
+      } p-10 h-fit mt-48 rounded-lg`}
     >
-      <p className='text-center text-2xl text-black'>Add New Product</p>
+      <p className='text-center text-2xl'>Add New Product</p>
       <label htmlFor='Product Image' className='block text-center'>
         Product Image
       </label>

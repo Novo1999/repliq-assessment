@@ -49,10 +49,7 @@ const Product = ({ product }) => {
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
         >
-          <Meta
-            title={<p className='text-white'>{name}</p>}
-            description={<p className='text-white'>{description}</p>}
-          />
+          <Meta title={<p className='text-white'>{name}</p>} />
           <div className='flex justify-between mt-6'>
             <p className='text-xl text-white'>Price: ${price}</p>
             <div

@@ -83,7 +83,7 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
       >
         <div />
         <motion.button
-          className='bg-blue-500 text-black font-bold rounded-lg flex justify-between h-10 p-3'
+          className='bg-sky-500 text-black font-bold rounded-lg flex justify-between h-10 p-3'
           whileTap={{ scale: 0.97 }}
         >
           {category || 'Filter By'}

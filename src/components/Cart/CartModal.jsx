@@ -1,5 +1,6 @@
 import { Modal } from 'antd'
 import Avatar from '../../assets/avatar.png'
+import useThemeContext from '../../hooks/useThemeContext.js'
 import CartItem from './CartItem.jsx'
 
 const CartModal = ({
@@ -9,6 +10,8 @@ const CartModal = ({
   selectedCustomer,
   customerName,
 }) => {
+  const { isLight } = useThemeContext()
+
   const showModal = () => {
     setIsModalOpen(true)
   }
@@ -35,15 +38,18 @@ const CartModal = ({
         okButtonProps={{ style: { display: 'none' } }}
         cancelButtonProps={{ style: { display: 'none' } }}
         centered
+        className={`${!isLight ? 'custom-modal' : ''}`}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <div className='bg-white rounded-md p-6 flex flex-col sm:flex-row justify-center items-center gap-10'>
+        <div className='rounded-md p-6 flex flex-col sm:flex-row justify-center items-center gap-10'>
           <div>
             <img className='size-12' src={Avatar} alt='avatar' />
           </div>
-          <p>{customerName}</p>
+          <p className={`${isLight ? 'text-black' : 'text-white'}`}>
+            {customerName}
+          </p>
         </div>
         <div>
           <CartItem

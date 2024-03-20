@@ -17,7 +17,7 @@ const CartUserContent = ({ customer }) => {
       onClick={() => setSelectedCustomer(customer)}
       whileHover={{ scale: 1.05 }}
       key={customer.userId}
-      className='text-black flex items-center flex-col justify-center font-poppins gap-2 cursor-pointer'
+      className='flex items-center flex-col justify-center font-poppins gap-2 cursor-pointer'
     >
       <CartModal
         customerName={name}

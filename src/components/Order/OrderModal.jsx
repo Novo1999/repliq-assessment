@@ -1,8 +1,10 @@
 import { Modal } from 'antd'
 import Avatar from '../../assets/avatar.png'
+import useThemeContext from '../../hooks/useThemeContext.js'
 import { setOrderStatsBg } from '../../utils/setOrderStatusBg.js'
 
 const OrderModal = ({ isModalOpen, setIsModalOpen, children, order }) => {
+  const { isLight } = useThemeContext()
   const { customerName, status, totalAmount } = order
   const showModal = () => {
     setIsModalOpen(true)
@@ -26,7 +28,7 @@ const OrderModal = ({ isModalOpen, setIsModalOpen, children, order }) => {
         okButtonProps={{ style: { display: 'none' } }}
         cancelButtonProps={{ style: { display: 'none' } }}
         centered
-        className='!w-96'
+        className={`!w-96 ${!isLight ? 'custom-modal' : ''}`}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -36,7 +38,11 @@ const OrderModal = ({ isModalOpen, setIsModalOpen, children, order }) => {
             <img className='size-60' src={Avatar} alt='Shoes' />
           </figure>
           <div className='card-body'>
-            <h2 className='card-title'>{customerName}</h2>
+            <h2
+              className={`card-title ${!isLight ? 'text-white' : 'text-black'}`}
+            >
+              {customerName}
+            </h2>
             <p className={`${setOrderStatsBg(order)} w-fit p-1 text-white`}>
               Status: {status}
             </p>
