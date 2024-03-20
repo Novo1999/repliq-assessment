@@ -4,11 +4,11 @@ import { useState } from 'react'
 import useGetProducts from '../../hooks/api/useGetProducts.js'
 import useCategoryContext from '../../hooks/useCategoryContext.js'
 import useProductContext from '../../hooks/useProductContext.js'
-import ProductModal from './ProductModal.jsx'
+import ProductModal from '../Modals/ProductModal.jsx'
 const { Meta } = Card
 
 const Product = ({ product }) => {
-  const { category, description, name, price, imageURL } = product
+  const { category, name, price, imageURL } = product
   const { data: { data } = {} } = useGetProducts()
   const { setIsFiltering, setCategory } = useCategoryContext()
   const { setProducts } = useProductContext()

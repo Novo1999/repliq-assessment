@@ -1,7 +1,7 @@
 import { Modal } from 'antd'
 import Avatar from '../../assets/avatar.png'
 import useThemeContext from '../../hooks/useThemeContext.js'
-import CartItem from './CartItem.jsx'
+import CartItem from '../Cart/CartItem.jsx'
 
 const CartModal = ({
   isModalOpen,

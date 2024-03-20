@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import OrderModal from './OrderModal.jsx'
+import OrderModal from '../Modals/OrderModal.jsx'
 
 const OrderContent = ({ order }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
