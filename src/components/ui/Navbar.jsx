@@ -2,17 +2,12 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { AiTwotoneShop } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
-import useAuthContext from '../../hooks/useAuthContext.js'
 import useThemeContext from '../../hooks/useThemeContext.js'
 import NavContent from './NavContent.jsx'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { isLight } = useThemeContext()
-
-  const {
-    user: { accessToken },
-  } = useAuthContext()
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)

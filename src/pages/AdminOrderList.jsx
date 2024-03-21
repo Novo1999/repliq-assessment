@@ -2,17 +2,10 @@ import { motion } from 'framer-motion'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import OrderContent from '../components/Order/OrderContent.jsx'
 import Loader from '../components/ui/Loader.jsx'
+import { TABLE_HEADER_TITLES } from '../constants.js'
 import useGetOrders from '../hooks/api/useGetOrders.js'
 import useThemeContext from '../hooks/useThemeContext.js'
 import { setOrderStatsBg } from '../utils/setOrderStatusBg.js'
-
-const tableHeaderTitles = [
-  'Order ID',
-  'Customer Name',
-  'Total Amount',
-  'Status',
-  'Actions',
-]
 
 // table head
 const THead = ({ children }) => (
@@ -46,11 +39,16 @@ const AdminOrderList = () => {
 
   if (!isLoading && !isError && data?.length > 0) {
     content = data?.map((order) => (
-      <tr key={order.id} className={`${isLight ? 'text-black' : 'text-white'}`}>
-        <td className='px-6 py-4 whitespace-nowrap'>{order.id}</td>
-        <td className='px-6 py-4 whitespace-nowrap'>{order.customerName}</td>
-        <td className='px-6 py-4 whitespace-nowrap'>$ {order.totalAmount}</td>
-        <td className='px-6 py-4 whitespace-nowrap'>
+      <tr
+        key={order.id}
+        className={`*:px-6 *:py-4  *:whitespace-nowrap ${
+          isLight ? 'text-black' : 'text-white'
+        }`}
+      >
+        <td>{order.id}</td>
+        <td>{order.customerName}</td>
+        <td>$ {order.totalAmount}</td>
+        <td>
           <p
             className={`${setOrderStatsBg(
               order
@@ -81,7 +79,7 @@ const AdminOrderList = () => {
             <table className='min-w-full divide-y divide-gray-200'>
               <thead className={`${isLight ? 'bg-gray-50' : 'bg-stone-800'}`}>
                 <tr>
-                  {tableHeaderTitles.map((title, index) => (
+                  {TABLE_HEADER_TITLES.map((title, index) => (
                     <THead key={index}>{title}</THead>
                   ))}
                 </tr>

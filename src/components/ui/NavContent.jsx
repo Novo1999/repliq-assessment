@@ -1,3 +1,5 @@
+import { UserOutlined } from '@ant-design/icons'
+import { Avatar } from 'antd'
 import { ImCart } from 'react-icons/im'
 import useCartContext from '../../hooks/useCartContext.js'
 import useThemeContext from '../../hooks/useThemeContext.js'
@@ -34,10 +36,16 @@ const NavContent = ({ isOpen, setIsOpen }) => {
         <div
           // stop propagate so switching theme does not close the navbar
           onClick={(e) => e.stopPropagation()}
-          className='ml-5 my-4 block sm:hidden'
+          className='ml-5 my-4 flex gap-2 sm:hidden'
         >
           <DarkModeSwitch />
+          <p className='mt-[1.5px]'>Switch to {isLight ? 'Dark' : 'Light'}</p>
         </div>
+        <Avatar
+          className='hidden lg:block relative left-8'
+          size='large'
+          icon={<UserOutlined />}
+        />
       </div>
       <div className='items-center mt-4 lg:mt-0 hidden lg:flex'>
         <CartDrawer>
@@ -67,19 +75,28 @@ const NavContent = ({ isOpen, setIsOpen }) => {
       </div>
       <CartDrawer>
         <div
-          className={`block transition-colors duration-300 transform lg:hidden relative right-4 ${
+          className={`transition-colors flex gap-4 items-center duration-300 relative transform lg:hidden right-4 ${
             isLight ? 'text-stone-800' : '!text-white'
           } focus:outline-none`}
           aria-label='show notifications'
         >
-          <ImCart className={`text-2xl `} />
+          <ImCart className='text-2xl mt-3' />
           {cart.length ? (
-            <div className='rounded-full bg-green-400 absolute top-3 left-3 size-5'>
+            <div className='rounded-full bg-green-400 absolute top-6 left-3 size-5'>
               {cart.length}
             </div>
           ) : null}
+          <p className='mt-4'>Cart</p>
         </div>
       </CartDrawer>
+      <div className='sm:hidden gap-2 items-center flex'>
+        <Avatar
+          className='lg:hidden block mt-4 relative right-1'
+          size='large'
+          icon={<UserOutlined />}
+        />
+        <p className='mt-4'>Profile</p>
+      </div>
     </div>
   )
 }

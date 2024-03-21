@@ -3,7 +3,7 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import useGetCustomers from '../../hooks/api/useGetCustomers.js'
 import useCustomerContext from '../../hooks/useCustomer.js'
 import Error from '../misc/Error.jsx'
-import CustomerCard from './CustomerCard.jsx'
+import CustomerRow from './CustomerRow.jsx'
 
 const Customers = () => {
   const {
@@ -44,7 +44,7 @@ const Customers = () => {
 
   if (!customerLoading && !customerError && customerData?.length > 0) {
     content = customer.map((customer) => {
-      return <CustomerCard customer={customer} key={customer.id} />
+      return <CustomerRow customer={customer} key={customer.id} />
     })
   }
   return content
