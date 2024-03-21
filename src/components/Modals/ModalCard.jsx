@@ -23,7 +23,7 @@ const ModalCard = ({ product, setIsModalOpen }) => {
   }
 
   return (
-    <div className='flex w-full flex-col md:flex-row overflow-hidden rounded-lg h-fit font-poppins'>
+    <div className='flex w-full flex-col md:flex-row overflow-hidden rounded-lg h-fit font-poppins pt-6'>
       <div className='w-fit sm:w-48'>
         <img src={imageURL} alt='product' />
       </div>

@@ -30,7 +30,7 @@ const CartUserContent = ({ customer }) => {
         setIsModalOpen={setIsModalOpen}
       >
         <img className='size-20' src={Avatar} alt='avatar' />
-        <p className={`${isLight ? 'text-black' : 'text-white'}`}>
+        <p className={`font-semibold ${isLight ? 'text-black' : 'text-white'}`}>
           {customerData?.find((item) => item.id === customer.userId).name}
         </p>
       </CartModal>

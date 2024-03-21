@@ -16,9 +16,7 @@ const Home = () => {
   })
 
   return (
-    <motion.div
-      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 0.5 } }}
-    >
+    <motion.div>
       <Carousel />
       <ProductContainer>
         <ProductList />

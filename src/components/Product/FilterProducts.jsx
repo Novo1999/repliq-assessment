@@ -26,7 +26,6 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='h-6 w-6'
-            fill='blue'
             viewBox='0 0 24 24'
             stroke='currentColor'
           >
@@ -50,12 +49,12 @@ const FilterProducts = ({ isOpen, setIsOpen }) => {
       >
         <div />
         <motion.button
-          className='bg-sky-500 text-black font-bold rounded-lg flex justify-between h-10 p-3'
+          className='bg-sky-500 text-white font-bold rounded-lg flex justify-between h-10 p-3'
           whileTap={{ scale: 0.97 }}
         >
           {category || 'Filter By'}
           <div className='arrow' style={{ transformOrigin: '50% 55%' }}>
-            <svg width='15' height='15' viewBox='0 0 20 20'>
+            <svg width='15' height='15' viewBox='0 0 20 20' fill='white'>
               <path d='M0 7 L 20 7 L 10 16' />
             </svg>
           </div>

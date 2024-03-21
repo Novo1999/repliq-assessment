@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { PHONE_NUMBER_REGEX } from '../constants.js'
 import useAuthContext from '../hooks/useAuthContext.js'
+import useThemeContext from '../hooks/useThemeContext.js'
 
 const Register = () => {
   const {
@@ -10,6 +11,7 @@ const Register = () => {
     formState: { errors },
     setError,
   } = useForm()
+  const { isLight } = useThemeContext()
   const { setUser, users, setUsers } = useAuthContext()
   const navigate = useNavigate()
 
@@ -33,10 +35,14 @@ const Register = () => {
   }
 
   return (
-    <div className='flex justify-center items-center h-screen font-poppins'>
+    <div
+      className={`flex justify-center items-center h-screen ${
+        isLight ? 'bg-white' : 'bg-stone-800'
+      } font-poppins`}
+    >
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='w-96 p-8 bg-white rounded-lg shadow-lg'
+        className='w-96 p-8 bg-white rounded-lg shadow-lg border-2'
       >
         <h2 className='text-2xl font-semibold mb-4'>Register</h2>
         <div className='mb-4'>

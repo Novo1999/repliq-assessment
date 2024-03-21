@@ -34,8 +34,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <motion.div
-      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 0.5 } }}
+    <div
       className={`min-h-screen ${
         isLight ? 'bg-gray-100' : 'bg-stone-800'
       }  font-poppins`}
@@ -139,7 +138,7 @@ const AdminDashboard = () => {
           </div>
         </div>
       </main>
-    </motion.div>
+    </div>
   )
 }
 

@@ -47,7 +47,11 @@ const CartModal = ({
           <div>
             <img className='size-12' src={Avatar} alt='avatar' />
           </div>
-          <p className={`${isLight ? 'text-black' : 'text-white'}`}>
+          <p
+            className={`text-xl font-poppins ${
+              isLight ? 'text-black' : 'text-white'
+            }`}
+          >
             {customerName}
           </p>
         </div>

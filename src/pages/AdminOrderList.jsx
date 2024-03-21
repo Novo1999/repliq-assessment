@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import OrderContent from '../components/Order/OrderContent.jsx'
 import Loader from '../components/ui/Loader.jsx'
@@ -63,9 +62,7 @@ const AdminOrderList = () => {
   }
 
   return (
-    <motion.div
-      exit={{ x: '-100vw', transition: { ease: 'easeInOut', duration: 0.5 } }}
-    >
+    <div>
       {isLoading ? (
         <div className='bg-white *:text-7xl flex justify-center items-center min-h-screen'>
           <Loader />
@@ -95,7 +92,7 @@ const AdminOrderList = () => {
           )}
         </div>
       )}
-    </motion.div>
+    </div>
   )
 }
 

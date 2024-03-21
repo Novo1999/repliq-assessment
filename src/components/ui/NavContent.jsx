@@ -73,23 +73,25 @@ const NavContent = ({ isOpen, setIsOpen }) => {
           </div>
         </CartDrawer>
       </div>
-      <CartDrawer>
-        <div
-          className={`transition-colors flex gap-4 items-center duration-300 relative transform lg:hidden right-4 ${
-            isLight ? 'text-stone-800' : '!text-white'
-          } focus:outline-none`}
-          aria-label='show notifications'
-        >
-          <ImCart className='text-2xl mt-3' />
-          {cart.length ? (
-            <div className='rounded-full bg-green-400 absolute top-6 left-3 size-5'>
-              {cart.length}
-            </div>
-          ) : null}
-          <p className='mt-4'>Cart</p>
-        </div>
-      </CartDrawer>
-      <div className='sm:hidden gap-2 items-center flex'>
+      <div className='block lg:hidden'>
+        <CartDrawer>
+          <div
+            className={`transition-colors flex gap-4 items-center duration-300 relative transform lg:hidden right-4 ${
+              isLight ? 'text-stone-800' : '!text-white'
+            } focus:outline-none`}
+            aria-label='show notifications'
+          >
+            <ImCart className='text-2xl mt-3' />
+            {cart.length ? (
+              <div className='rounded-full bg-green-400 absolute top-6 left-3 size-5'>
+                {cart.length}
+              </div>
+            ) : null}
+            <p className='mt-4'>Cart</p>
+          </div>
+        </CartDrawer>
+      </div>
+      <div className='lg:hidden gap-2 items-center flex'>
         <Avatar
           className='lg:hidden block mt-4 relative right-1'
           size='large'

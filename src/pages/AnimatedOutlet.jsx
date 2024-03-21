@@ -19,9 +19,9 @@ const AnimatedOutletFinal = () => {
         key={location.pathname}
         exit={{
           opacity: 0,
-          x: 100,
+          x: 50,
           transition: {
-            duration: 0.5,
+            duration: 0.3,
             ease: 'easeInOut',
           },
         }}
