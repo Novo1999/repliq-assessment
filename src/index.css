@@ -11,6 +11,16 @@
 .custom-modal .ant-modal-footer {
   background-color: #292524;
 }
+.custom-table .ant-table-content {
+  background-color: #292524;
+  color: white;
+}
+
+.custom-table .ant-table-row:hover {
+  color: black;
+  transition: all;
+  transition-duration: 0.3s;
+}
 
 .custom-modal .ant-modal-close-x {
   color: white;

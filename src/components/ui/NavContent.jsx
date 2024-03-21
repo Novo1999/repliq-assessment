@@ -30,6 +30,7 @@ const NavContent = ({ isOpen, setIsOpen }) => {
         <Navlink to='/dashboard'>Dashboard</Navlink>
         <Navlink to='/orders'>Orders</Navlink>
         <Navlink to='/products'>Products</Navlink>
+        <Navlink to='/checkout'>Checkouts</Navlink>
         <div className='ml-5 my-4 hidden sm:block'>
           <DarkModeSwitch />
         </div>
