@@ -12,7 +12,7 @@ const getCheckout = async () => {
 }
 
 const useGetCheckout = () => {
-  const query = useQuery({ queryKey: ['customers'], queryFn: getCheckout })
+  const query = useQuery({ queryKey: ['checkouts'], queryFn: getCheckout })
 
   return query
 }

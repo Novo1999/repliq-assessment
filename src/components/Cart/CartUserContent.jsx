@@ -31,7 +31,7 @@ const CartUserContent = ({ customer }) => {
       >
         <img className='size-20' src={Avatar} alt='avatar' />
         <p className={`font-semibold ${isLight ? 'text-black' : 'text-white'}`}>
-          {customerData?.find((item) => item.id === customer.userId).name}
+          {customerData?.find((item) => item.id === customer.userId)?.name}
         </p>
       </CartModal>
     </motion.div>
